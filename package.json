@@ -1,0 +1,23 @@
+{
+  "name": "com.alianblank.gameframex.entity",
+  "displayName": "Game Frame X Entity",
+  "category": "Game Framework X",
+  "description": "Game Frame X Entity Component",
+  "version": "1.0.0",
+  "unity": "2017.1",
+  "keywords": [
+    "Game Framework X"
+  ],
+  "repository": {
+    "name": "com.alianblank.gameframex.entity",
+    "url": "https://github.com/AlianBlank/com.alianblank.gameframex.unity.entity.git",
+    "type": "git"
+  },
+  "author": {
+    "name": "Blank",
+    "email": "alianblank@outlook.com",
+    "url": "https://alianblank.com/"
+  },
+  "dependencies": {
+  }
+}
