@@ -13,7 +13,7 @@ using UnityEditor;
 namespace GameFrameX.Entity.Editor
 {
     [CustomEditor(typeof(EntityComponent))]
-    internal sealed class EntityComponentInspector : GameFrameworkInspector
+    internal sealed class EntityComponentInspector : ComponentTypeComponentInspector
     {
         private SerializedProperty m_EnableShowEntityUpdateEvent = null;
         private SerializedProperty m_EnableShowEntityDependencyAssetEvent = null;
@@ -58,14 +58,7 @@ namespace GameFrameX.Entity.Editor
             Repaint();
         }
 
-        protected override void OnCompileComplete()
-        {
-            base.OnCompileComplete();
-
-            RefreshTypeNames();
-        }
-
-        private void OnEnable()
+        protected override void Enable()
         {
             m_EnableShowEntityUpdateEvent = serializedObject.FindProperty("m_EnableShowEntityUpdateEvent");
             m_EnableShowEntityDependencyAssetEvent = serializedObject.FindProperty("m_EnableShowEntityDependencyAssetEvent");
@@ -75,14 +68,14 @@ namespace GameFrameX.Entity.Editor
             m_EntityHelperInfo.Init(serializedObject);
             m_EntityGroupHelperInfo.Init(serializedObject);
 
-            RefreshTypeNames();
-        }
-
-        private void RefreshTypeNames()
-        {
             m_EntityHelperInfo.Refresh();
             m_EntityGroupHelperInfo.Refresh();
             serializedObject.ApplyModifiedProperties();
+        }
+
+        protected override void RefreshTypeNames()
+        {
+            RefreshComponentTypeNames(typeof(IEntityManager));
         }
     }
 }
