@@ -1,5 +1,5 @@
 {
-  "name": "com.alianblank.gameframex.entity",
+  "name": "com.alianblank.gameframex.unity.entity",
   "displayName": "Game Frame X Entity",
   "category": "Game Framework X",
   "description": "Game Frame X Entity Component",
@@ -9,7 +9,7 @@
     "Game Framework X"
   ],
   "repository": {
-    "name": "com.alianblank.gameframex.entity",
+    "name": "com.alianblank.gameframex.unity.entity",
     "url": "https://github.com/AlianBlank/com.alianblank.gameframex.unity.entity.git",
     "type": "git"
   },
