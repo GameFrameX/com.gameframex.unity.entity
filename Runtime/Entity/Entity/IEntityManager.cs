@@ -7,6 +7,8 @@
 
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using GameFrameX.Asset.Runtime;
 using GameFrameX.ObjectPool;
 
@@ -194,7 +196,7 @@ namespace GameFrameX.Entity.Runtime
         /// <param name="entityId">实体编号。</param>
         /// <param name="entityAssetName">实体资源名称。</param>
         /// <param name="entityGroupName">实体组名称。</param>
-        void ShowEntity(int entityId, string entityAssetName, string entityGroupName);
+        UniTask<IEntity> ShowEntityAsync(int entityId, string entityAssetName, string entityGroupName);
 
         /// <summary>
         /// 显示实体。
@@ -203,7 +205,7 @@ namespace GameFrameX.Entity.Runtime
         /// <param name="entityAssetName">实体资源名称。</param>
         /// <param name="entityGroupName">实体组名称。</param>
         /// <param name="priority">加载实体资源的优先级。</param>
-        void ShowEntity(int entityId, string entityAssetName, string entityGroupName, int priority);
+        UniTask<IEntity> ShowEntityAsync(int entityId, string entityAssetName, string entityGroupName, int priority);
 
         /// <summary>
         /// 显示实体。
@@ -212,7 +214,7 @@ namespace GameFrameX.Entity.Runtime
         /// <param name="entityAssetName">实体资源名称。</param>
         /// <param name="entityGroupName">实体组名称。</param>
         /// <param name="userData">用户自定义数据。</param>
-        void ShowEntity(int entityId, string entityAssetName, string entityGroupName, object userData);
+        UniTask<IEntity> ShowEntityAsync(int entityId, string entityAssetName, string entityGroupName, object userData);
 
         /// <summary>
         /// 显示实体。
@@ -222,7 +224,7 @@ namespace GameFrameX.Entity.Runtime
         /// <param name="entityGroupName">实体组名称。</param>
         /// <param name="priority">加载实体资源的优先级。</param>
         /// <param name="userData">用户自定义数据。</param>
-        void ShowEntity(int entityId, string entityAssetName, string entityGroupName, int priority, object userData);
+        UniTask<IEntity> ShowEntityAsync(int entityId, string entityAssetName, string entityGroupName, int priority, object userData);
 
         /// <summary>
         /// 隐藏实体。

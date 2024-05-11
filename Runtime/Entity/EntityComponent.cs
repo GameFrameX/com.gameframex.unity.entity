@@ -8,6 +8,7 @@
 using GameFrameX.ObjectPool;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using GameFrameX.Asset.Runtime;
 using GameFrameX.Event.Runtime;
 using GameFrameX.Runtime;
@@ -373,9 +374,9 @@ namespace GameFrameX.Entity.Runtime
         /// <param name="entityId">实体编号。</param>
         /// <param name="entityAssetName">实体资源名称。</param>
         /// <param name="entityGroupName">实体组名称。</param>
-        public void ShowEntity<T>(int entityId, string entityAssetName, string entityGroupName) where T : EntityLogic
+        public Task<IEntity> ShowEntityAsync<T>(int entityId, string entityAssetName, string entityGroupName) where T : EntityLogic
         {
-            ShowEntity(entityId, typeof(T), entityAssetName, entityGroupName, DefaultPriority, null);
+            return ShowEntityAsync(entityId, typeof(T), entityAssetName, entityGroupName, DefaultPriority, null);
         }
 
         /// <summary>
@@ -385,9 +386,9 @@ namespace GameFrameX.Entity.Runtime
         /// <param name="entityLogicType">实体逻辑类型。</param>
         /// <param name="entityAssetName">实体资源名称。</param>
         /// <param name="entityGroupName">实体组名称。</param>
-        public void ShowEntity(int entityId, Type entityLogicType, string entityAssetName, string entityGroupName)
+        public Task<IEntity> ShowEntityAsync(int entityId, Type entityLogicType, string entityAssetName, string entityGroupName)
         {
-            ShowEntity(entityId, entityLogicType, entityAssetName, entityGroupName, DefaultPriority, null);
+            return ShowEntityAsync(entityId, entityLogicType, entityAssetName, entityGroupName, DefaultPriority, null);
         }
 
         /// <summary>
@@ -398,10 +399,9 @@ namespace GameFrameX.Entity.Runtime
         /// <param name="entityAssetName">实体资源名称。</param>
         /// <param name="entityGroupName">实体组名称。</param>
         /// <param name="priority">加载实体资源的优先级。</param>
-        public void ShowEntity<T>(int entityId, string entityAssetName, string entityGroupName, int priority)
-            where T : EntityLogic
+        public Task<IEntity> ShowEntityAsync<T>(int entityId, string entityAssetName, string entityGroupName, int priority) where T : EntityLogic
         {
-            ShowEntity(entityId, typeof(T), entityAssetName, entityGroupName, priority, null);
+            return ShowEntityAsync(entityId, typeof(T), entityAssetName, entityGroupName, priority, null);
         }
 
         /// <summary>
@@ -412,10 +412,9 @@ namespace GameFrameX.Entity.Runtime
         /// <param name="entityAssetName">实体资源名称。</param>
         /// <param name="entityGroupName">实体组名称。</param>
         /// <param name="priority">加载实体资源的优先级。</param>
-        public void ShowEntity(int entityId, Type entityLogicType, string entityAssetName, string entityGroupName,
-            int priority)
+        public Task<IEntity> ShowEntityAsync(int entityId, Type entityLogicType, string entityAssetName, string entityGroupName, int priority)
         {
-            ShowEntity(entityId, entityLogicType, entityAssetName, entityGroupName, priority, null);
+            return ShowEntityAsync(entityId, entityLogicType, entityAssetName, entityGroupName, priority, null);
         }
 
         /// <summary>
@@ -426,10 +425,9 @@ namespace GameFrameX.Entity.Runtime
         /// <param name="entityAssetName">实体资源名称。</param>
         /// <param name="entityGroupName">实体组名称。</param>
         /// <param name="userData">用户自定义数据。</param>
-        public void ShowEntity<T>(int entityId, string entityAssetName, string entityGroupName, object userData)
-            where T : EntityLogic
+        public Task<IEntity> ShowEntityAsync<T>(int entityId, string entityAssetName, string entityGroupName, object userData) where T : EntityLogic
         {
-            ShowEntity(entityId, typeof(T), entityAssetName, entityGroupName, DefaultPriority, userData);
+            return ShowEntityAsync(entityId, typeof(T), entityAssetName, entityGroupName, DefaultPriority, userData);
         }
 
         /// <summary>
@@ -440,10 +438,9 @@ namespace GameFrameX.Entity.Runtime
         /// <param name="entityAssetName">实体资源名称。</param>
         /// <param name="entityGroupName">实体组名称。</param>
         /// <param name="userData">用户自定义数据。</param>
-        public void ShowEntity(int entityId, Type entityLogicType, string entityAssetName, string entityGroupName,
-            object userData)
+        public Task<IEntity> ShowEntityAsync(int entityId, Type entityLogicType, string entityAssetName, string entityGroupName, object userData)
         {
-            ShowEntity(entityId, entityLogicType, entityAssetName, entityGroupName, DefaultPriority, userData);
+            return ShowEntityAsync(entityId, entityLogicType, entityAssetName, entityGroupName, DefaultPriority, userData);
         }
 
         /// <summary>
@@ -455,10 +452,9 @@ namespace GameFrameX.Entity.Runtime
         /// <param name="entityGroupName">实体组名称。</param>
         /// <param name="priority">加载实体资源的优先级。</param>
         /// <param name="userData">用户自定义数据。</param>
-        public void ShowEntity<T>(int entityId, string entityAssetName, string entityGroupName, int priority,
-            object userData) where T : EntityLogic
+        public Task<IEntity> ShowEntityAsync<T>(int entityId, string entityAssetName, string entityGroupName, int priority, object userData) where T : EntityLogic
         {
-            ShowEntity(entityId, typeof(T), entityAssetName, entityGroupName, priority, userData);
+            return ShowEntityAsync(entityId, typeof(T), entityAssetName, entityGroupName, priority, userData);
         }
 
         /// <summary>
@@ -470,16 +466,15 @@ namespace GameFrameX.Entity.Runtime
         /// <param name="entityGroupName">实体组名称。</param>
         /// <param name="priority">加载实体资源的优先级。</param>
         /// <param name="userData">用户自定义数据。</param>
-        public void ShowEntity(int entityId, Type entityLogicType, string entityAssetName, string entityGroupName,
-            int priority, object userData)
+        public async Task<IEntity> ShowEntityAsync(int entityId, Type entityLogicType, string entityAssetName, string entityGroupName, int priority, object userData)
         {
             if (entityLogicType == null)
             {
                 Log.Error("Entity type is invalid.");
-                return;
+                return null;
             }
 
-            m_EntityManager.ShowEntity(entityId, entityAssetName, entityGroupName, priority, ShowEntityInfo.Create(entityLogicType, userData));
+            return await m_EntityManager.ShowEntityAsync(entityId, entityAssetName, entityGroupName, priority, ShowEntityInfo.Create(entityLogicType, userData));
         }
 
         /// <summary>

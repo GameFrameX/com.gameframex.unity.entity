@@ -7,6 +7,7 @@
 
 using System;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using GameFrameX.Asset;
 using GameFrameX.Asset.Runtime;
 using GameFrameX.ObjectPool;
@@ -496,7 +497,7 @@ namespace GameFrameX.Entity.Runtime
             }
 
             results.Clear();
-            foreach (KeyValuePair<int, int> entityBeingLoaded in m_EntitiesBeingLoaded)
+            foreach (var entityBeingLoaded in m_EntitiesBeingLoaded)
             {
                 results.Add(entityBeingLoaded.Key);
             }
@@ -533,9 +534,9 @@ namespace GameFrameX.Entity.Runtime
         /// <param name="entityId">实体编号。</param>
         /// <param name="entityAssetName">实体资源名称。</param>
         /// <param name="entityGroupName">实体组名称。</param>
-        public void ShowEntity(int entityId, string entityAssetName, string entityGroupName)
+        public UniTask<IEntity> ShowEntityAsync(int entityId, string entityAssetName, string entityGroupName)
         {
-            ShowEntity(entityId, entityAssetName, entityGroupName, 0, null);
+            return ShowEntityAsync(entityId, entityAssetName, entityGroupName, 0, null);
         }
 
         /// <summary>
@@ -545,9 +546,9 @@ namespace GameFrameX.Entity.Runtime
         /// <param name="entityAssetName">实体资源名称。</param>
         /// <param name="entityGroupName">实体组名称。</param>
         /// <param name="priority">加载实体资源的优先级。</param>
-        public void ShowEntity(int entityId, string entityAssetName, string entityGroupName, int priority)
+        public UniTask<IEntity> ShowEntityAsync(int entityId, string entityAssetName, string entityGroupName, int priority)
         {
-            ShowEntity(entityId, entityAssetName, entityGroupName, priority, null);
+            return ShowEntityAsync(entityId, entityAssetName, entityGroupName, priority, null);
         }
 
         /// <summary>
@@ -557,9 +558,9 @@ namespace GameFrameX.Entity.Runtime
         /// <param name="entityAssetName">实体资源名称。</param>
         /// <param name="entityGroupName">实体组名称。</param>
         /// <param name="userData">用户自定义数据。</param>
-        public void ShowEntity(int entityId, string entityAssetName, string entityGroupName, object userData)
+        public UniTask<IEntity> ShowEntityAsync(int entityId, string entityAssetName, string entityGroupName, object userData)
         {
-            ShowEntity(entityId, entityAssetName, entityGroupName, 0, userData);
+            return ShowEntityAsync(entityId, entityAssetName, entityGroupName, 0, userData);
         }
 
         /// <summary>
@@ -570,7 +571,7 @@ namespace GameFrameX.Entity.Runtime
         /// <param name="entityGroupName">实体组名称。</param>
         /// <param name="priority">加载实体资源的优先级。</param>
         /// <param name="userData">用户自定义数据。</param>
-        public async void ShowEntity(int entityId, string entityAssetName, string entityGroupName, int priority, object userData)
+        public async UniTask<IEntity> ShowEntityAsync(int entityId, string entityAssetName, string entityGroupName, int priority, object userData)
         {
             if (_assetManager == null)
             {
@@ -608,6 +609,7 @@ namespace GameFrameX.Entity.Runtime
                 throw new GameFrameworkException(Utility.Text.Format("Entity group '{0}' is not exist.", entityGroupName));
             }
 
+            UniTaskCompletionSource<IEntity> tcs = new UniTaskCompletionSource<IEntity>();
             EntityInstanceObject entityInstanceObject = entityGroup.SpawnEntityInstanceObject(entityAssetName);
             if (entityInstanceObject == null)
             {
@@ -620,17 +622,18 @@ namespace GameFrameX.Entity.Runtime
                     var newUserData = ShowEntityInfo.Create(serialId, entityId, entityGroup, userData);
                     if (handle.IsSucceed)
                     {
-                        LoadAssetSuccessCallback(entityAssetName, handle, handle.Progress, newUserData);
+                        LoadAssetSuccessCallback(tcs, entityAssetName, handle, handle.Progress, newUserData);
                     }
                     else
                     {
-                        LoadAssetFailureCallback(entityAssetName, handle.Status, handle.LastError, newUserData);
+                        LoadAssetFailureCallback(tcs, entityAssetName, handle.Status, handle.LastError, newUserData);
                     }
                 };
-                return;
+                return await tcs.Task;
             }
 
-            InternalShowEntity(entityId, entityAssetName, entityGroup, entityInstanceObject.Target, false, 0f, userData);
+            InternalShowEntity(tcs, entityId, entityAssetName, entityGroup, entityInstanceObject.Target, false, 0f, userData);
+            return await tcs.Task;
         }
 
         /// <summary>
@@ -1136,14 +1139,16 @@ namespace GameFrameX.Entity.Runtime
             return null;
         }
 
-        private void InternalShowEntity(int entityId, string entityAssetName, EntityGroup entityGroup, object entityInstance, bool isNewInstance, float duration, object userData)
+        private void InternalShowEntity(UniTaskCompletionSource<IEntity> tcs, int entityId, string entityAssetName, EntityGroup entityGroup, object entityInstance, bool isNewInstance, float duration, object userData)
         {
             try
             {
                 IEntity entity = m_EntityHelper.CreateEntity(entityInstance, entityGroup, userData);
                 if (entity == null)
                 {
-                    throw new GameFrameworkException("Can not create entity in entity helper.");
+                    var exception = new GameFrameworkException("Can not create entity in entity helper.");
+                    tcs.TrySetException(exception);
+                    throw exception;
                 }
 
                 EntityInfo entityInfo = EntityInfo.Create(entity);
@@ -1162,6 +1167,8 @@ namespace GameFrameX.Entity.Runtime
                     m_ShowEntitySuccessEventHandler(this, showEntitySuccessEventArgs);
                     // ReferencePool.Release(showEntitySuccessEventArgs);
                 }
+
+                tcs.TrySetResult(entity);
             }
             catch (Exception exception)
             {
@@ -1173,6 +1180,7 @@ namespace GameFrameX.Entity.Runtime
                     return;
                 }
 
+                tcs.TrySetException(exception);
                 throw;
             }
         }
@@ -1218,12 +1226,14 @@ namespace GameFrameX.Entity.Runtime
             m_RecycleQueue.Enqueue(entityInfo);
         }
 
-        private void LoadAssetSuccessCallback(string entityAssetName, object entityAsset, float duration, object userData)
+        private void LoadAssetSuccessCallback(UniTaskCompletionSource<IEntity> tcs, string entityAssetName, object entityAsset, float duration, object userData)
         {
             ShowEntityInfo showEntityInfo = (ShowEntityInfo)userData;
             if (showEntityInfo == null)
             {
-                throw new GameFrameworkException("Show entity info is invalid.");
+                var exception = new GameFrameworkException("Show entity info is invalid.");
+                tcs.TrySetException(exception);
+                throw exception;
             }
 
             if (m_EntitiesToReleaseOnLoad.Contains(showEntityInfo.SerialId))
@@ -1238,16 +1248,19 @@ namespace GameFrameX.Entity.Runtime
             EntityInstanceObject entityInstanceObject = EntityInstanceObject.Create(entityAssetName, entityAsset, m_EntityHelper.InstantiateEntity(entityAsset), m_EntityHelper);
             showEntityInfo.EntityGroup.RegisterEntityInstanceObject(entityInstanceObject, true);
 
-            InternalShowEntity(showEntityInfo.EntityId, entityAssetName, showEntityInfo.EntityGroup, entityInstanceObject.Target, true, duration, showEntityInfo.UserData);
+            InternalShowEntity(tcs, showEntityInfo.EntityId, entityAssetName, showEntityInfo.EntityGroup, entityInstanceObject.Target, true, duration, showEntityInfo.UserData);
             ReferencePool.Release(showEntityInfo);
         }
 
-        private void LoadAssetFailureCallback(string entityAssetName, EOperationStatus status, string errorMessage, object userData)
+        private void LoadAssetFailureCallback(UniTaskCompletionSource<IEntity> tcs, string entityAssetName, EOperationStatus status, string errorMessage, object userData)
         {
             ShowEntityInfo showEntityInfo = (ShowEntityInfo)userData;
+            GameFrameworkException exception;
             if (showEntityInfo == null)
             {
-                throw new GameFrameworkException("Show entity info is invalid.");
+                exception = new GameFrameworkException("Show entity info is invalid.");
+                tcs.TrySetException(exception);
+                throw exception;
             }
 
             if (m_EntitiesToReleaseOnLoad.Contains(showEntityInfo.SerialId))
@@ -1258,15 +1271,17 @@ namespace GameFrameX.Entity.Runtime
 
             m_EntitiesBeingLoaded.Remove(showEntityInfo.EntityId);
             string appendErrorMessage = Utility.Text.Format("Load entity failure, asset name '{0}', status '{1}', error message '{2}'.", entityAssetName, status, errorMessage);
+            exception = new GameFrameworkException(appendErrorMessage);
             if (m_ShowEntityFailureEventHandler != null)
             {
                 ShowEntityFailureEventArgs showEntityFailureEventArgs = ShowEntityFailureEventArgs.Create(showEntityInfo.EntityId, entityAssetName, showEntityInfo.EntityGroup.Name, appendErrorMessage, showEntityInfo.UserData);
                 m_ShowEntityFailureEventHandler(this, showEntityFailureEventArgs);
                 // ReferencePool.Release(showEntityFailureEventArgs);
-                return;
+                // return;
             }
 
-            throw new GameFrameworkException(appendErrorMessage);
+            tcs.TrySetException(exception);
+            throw exception;
         }
 
         private void LoadAssetUpdateCallback(string entityAssetName, float progress, object userData)
