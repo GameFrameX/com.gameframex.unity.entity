@@ -98,7 +98,6 @@ namespace GameFrameX.Entity.Runtime
                 if (m_EntityLogic.GetType() == entityLogicType)
                 {
                     m_EntityLogic.enabled = true;
-                    
                 }
                 else
                 {
