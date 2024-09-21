@@ -67,7 +67,7 @@ namespace GameFrameX.Entity.Runtime
         /// </summary>
         protected override void Awake()
         {
-            ImplementationComponentType = Type.GetType(componentType);
+            ImplementationComponentType = Utility.Assembly.GetType(componentType);
             InterfaceComponentType = typeof(IEntityManager);
             base.Awake();
             m_EntityManager = GameFrameworkEntry.GetModule<IEntityManager>();
