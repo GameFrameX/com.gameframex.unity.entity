@@ -6,6 +6,7 @@
 //------------------------------------------------------------
 
 using GameFrameX.ObjectPool;
+using GameFrameX.Runtime;
 
 namespace GameFrameX.Entity.Runtime
 {

@@ -11,6 +11,7 @@ using Cysharp.Threading.Tasks;
 using GameFrameX.Asset;
 using GameFrameX.Asset.Runtime;
 using GameFrameX.ObjectPool;
+using GameFrameX.Runtime;
 using YooAsset;
 
 namespace GameFrameX.Entity.Runtime
@@ -18,6 +19,7 @@ namespace GameFrameX.Entity.Runtime
     /// <summary>
     /// 实体管理器。
     /// </summary>
+    [UnityEngine.Scripting.Preserve]
     public sealed partial class EntityManager : GameFrameworkModule, IEntityManager
     {
         private readonly Dictionary<int, EntityInfo> m_EntityInfos;

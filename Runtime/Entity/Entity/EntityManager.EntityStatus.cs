@@ -5,6 +5,8 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
+using GameFrameX.Runtime;
+
 namespace GameFrameX.Entity.Runtime
 {
     public sealed partial class EntityManager : GameFrameworkModule, IEntityManager

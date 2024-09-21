@@ -6,6 +6,7 @@
 //------------------------------------------------------------
 
 using GameFrameX;
+using GameFrameX.Runtime;
 using UnityEngine;
 
 namespace GameFrameX.Entity.Runtime
