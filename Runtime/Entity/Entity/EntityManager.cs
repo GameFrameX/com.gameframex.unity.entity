@@ -622,7 +622,7 @@ namespace GameFrameX.Entity.Runtime
                 assetOperationHandle.Completed += (handle) =>
                 {
                     var newUserData = ShowEntityInfo.Create(serialId, entityId, entityGroup, userData);
-                    if (handle.IsSucceed)
+                    if (handle.IsSucceed())
                     {
                         LoadAssetSuccessCallback(tcs, entityAssetName, handle, handle.Progress, newUserData);
                     }
