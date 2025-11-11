@@ -20,7 +20,7 @@ namespace GameFrameX.Entity.Runtime
     /// 实体组件。
     /// </summary>
     [DisallowMultipleComponent]
-    [AddComponentMenu("Game Framework/Entity")]
+    [AddComponentMenu("GameFrameX/Entity")]
     public sealed partial class EntityComponent : GameFrameworkComponent
     {
         private const int DefaultPriority = 0;
@@ -906,7 +906,7 @@ namespace GameFrameX.Entity.Runtime
                 if (parentTransform == null)
                 {
                     Log.Warning("Can not find transform path '{0}' from parent entity '{1}'.", parentTransformPath,
-                        parentEntity.Logic.Name);
+                                parentEntity.Logic.Name);
                     parentTransform = parentEntity.Logic.CachedTransform;
                 }
             }
@@ -1109,7 +1109,7 @@ namespace GameFrameX.Entity.Runtime
         private void OnShowEntityFailure(object sender, ShowEntityFailureEventArgs eventArgs)
         {
             Log.Warning("Show entity failure, entity id '{0}', asset name '{1}', entity group name '{2}', error message '{3}'.",
-                eventArgs.EntityId, eventArgs.EntityAssetName, eventArgs.EntityGroupName, eventArgs.ErrorMessage);
+                        eventArgs.EntityId, eventArgs.EntityAssetName, eventArgs.EntityGroupName, eventArgs.ErrorMessage);
             m_EventComponent.Fire(this, eventArgs);
         }
 
