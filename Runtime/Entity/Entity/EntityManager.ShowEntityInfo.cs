@@ -97,6 +97,10 @@ namespace GameFrameX.Entity.Runtime
                 m_SerialId = 0;
                 m_EntityId = 0;
                 m_EntityGroup = null;
+                if (m_UserData is GameFrameX.Entity.Runtime.ShowEntityInfo entityInfo)
+                {
+                    ReferencePool.Release(entityInfo);
+                }
                 m_UserData = null;
             }
         }
