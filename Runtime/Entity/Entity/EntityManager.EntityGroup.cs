@@ -376,7 +376,7 @@ namespace GameFrameX.Entity.Runtime
 
                 if (!m_Entities.Remove(entity))
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("Entity group '{0}' not exists specified entity '[{1}]{2}'.", m_Name, entity.Id, entity.EntityAssetName));
+                    Log.Fatal(Utility.Text.Format("Entity group '{0}' not exists specified entity '[{1}]{2}'.", m_Name, entity.Id, entity.EntityAssetName));
                 }
             }
 

@@ -273,13 +273,15 @@ namespace GameFrameX.Entity.Runtime
             EntityGroup entityGroup = (EntityGroup)entity.EntityGroup;
             if (entityGroup == null)
             {
-                throw new GameFrameworkException("Entity group is invalid.");
+                Log.Fatal("Entity group is invalid.");
+                return;
             }
 
             entityGroup.RemoveEntity(entity);
             if (!m_EntityInfos.Remove(entity.Id))
             {
-                throw new GameFrameworkException("Entity info is unmanaged.");
+                Log.Fatal("Entity info is unmanaged.");
+                return;
             }
 
             if (m_HideEntityCompleteEventHandler != null)
