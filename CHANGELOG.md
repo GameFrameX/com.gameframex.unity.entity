@@ -1,5 +1,13 @@
 # Changelog
 
+## [Unreleased](https://github.com/GameFrameX/com.gameframex.unity.entity/tree/HEAD)
+
+[Full Changelog](https://github.com/GameFrameX/com.gameframex.unity.entity/compare/2.0.0...HEAD)
+
+**Merged pull requests:**
+
+- 解决EntityManager.ShowEntityShow中嵌套GameFrameX.Entity.Runtime.ShowEntity… [\#2](https://github.com/GameFrameX/com.gameframex.unity.entity/pull/2) ([1802846624](https://github.com/1802846624))
+
 ## [2.0.0](https://github.com/GameFrameX/com.gameframex.unity.entity/tree/2.0.0) (2025-10-25)
 
 [Full Changelog](https://github.com/GameFrameX/com.gameframex.unity.entity/compare/1.0.1...2.0.0)
