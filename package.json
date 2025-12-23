@@ -3,14 +3,14 @@
   "displayName": "Game Frame X Entity",
   "category": "Game Framework X",
   "description": "Game Frame X Entity Component",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "unity": "2017.1",
   "keywords": [
     "GameFrameX"
   ],
   "repository": {
     "name": "com.gameframex.unity.entity",
-    "url": "https://github.com/gameframex/com.gameframex.unity.entity.git",
+    "url": "git+https://github.com/gameframex/com.gameframex.unity.entity.git",
     "type": "git"
   },
   "author": {

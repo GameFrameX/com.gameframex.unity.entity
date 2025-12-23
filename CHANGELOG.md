@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/gameframex/com.gameframex.unity.entity/compare/2.0.1...2.1.0) (2025-12-23)
+
+
+### Features
+
+* **ci:** change ci ([34acc7a](https://github.com/gameframex/com.gameframex.unity.entity/commit/34acc7a27595f0e3fb2aa851bcfeec6e0c820d3c))
+
 # Changelog
 
 ## [Unreleased](https://github.com/GameFrameX/com.gameframex.unity.entity/tree/HEAD)
