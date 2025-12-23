@@ -6,7 +6,7 @@
   "version": "2.0.1",
   "unity": "2017.1",
   "keywords": [
-    "Game Framework X"
+    "GameFrameX"
   ],
   "repository": {
     "name": "com.gameframex.unity.entity",
@@ -16,7 +16,16 @@
   "author": {
     "name": "Blank",
     "email": "alianblank@outlook.com",
-    "url": "https://alianblank.com/"
+    "url": "https://gameframex.doc.alianblank.com"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.cnb.cool/GameFrameX/npm/-/packages/"
+  },
+  "devDependencies": {
+    "semantic-release": "^24.2.0",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1"
+  }
 }
