@@ -295,13 +295,15 @@ namespace GameFrameX.Entity.Runtime
         /// <summary>
         /// 释放所有实体组。
         /// </summary>
-        void ReleaseAllEntityGroups();
+        /// <param name="expireTime">过期时间。默认值为 1 秒。</param>
+        void ReleaseAllEntityGroups(float expireTime = 1f);
 
         /// <summary>
         /// 释放实体组。
         /// </summary>
         /// <param name="entityGroupName">实体组名称。</param>
-        void ReleaseEntityGroup(string entityGroupName);
+        /// <param name="expireTime">过期时间。默认值为 1 秒。</param>
+        void ReleaseEntityGroup(string entityGroupName, float expireTime = 1f);
 
         /// <summary>
         /// 获取父实体。

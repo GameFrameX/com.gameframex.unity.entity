@@ -464,13 +464,14 @@ namespace GameFrameX.Entity.Runtime
         /// <summary>
         /// 释放所有实体组。
         /// </summary>
-        public void ReleaseAllEntityGroups()
+        /// <param name="expireTime">过期时间。默认值为 1 秒。</param>
+        public void ReleaseAllEntityGroups(float expireTime = 1f)
         {
             var groupList = new List<IEntityGroup>(32);
             GetAllEntityGroups(groupList);
             foreach (var entityGroup in groupList)
             {
-                ReleaseEntityGroup(entityGroup);
+                ReleaseEntityGroup(entityGroup, expireTime);
             }
         }
 
@@ -478,7 +479,8 @@ namespace GameFrameX.Entity.Runtime
         /// 释放实体组。
         /// </summary>
         /// <param name="entityGroup">实体组。</param>
-        private static void ReleaseEntityGroup(IEntityGroup entityGroup)
+        /// <param name="expireTime">过期时间。默认值为 1 秒。</param>
+        private static void ReleaseEntityGroup(IEntityGroup entityGroup, float expireTime)
         {
             if (entityGroup == null)
             {
@@ -486,7 +488,7 @@ namespace GameFrameX.Entity.Runtime
             }
 
             var currentExpireTime = entityGroup.InstanceExpireTime;
-            entityGroup.InstanceExpireTime = 0f;
+            entityGroup.InstanceExpireTime = expireTime;
             entityGroup.InstanceExpireTime = currentExpireTime;
         }
 
@@ -494,11 +496,12 @@ namespace GameFrameX.Entity.Runtime
         /// 释放实体组。
         /// </summary>
         /// <param name="entityGroupName">实体组名称。</param>
-        public void ReleaseEntityGroup(string entityGroupName)
+        /// <param name="expireTime">过期时间。默认值为 1 秒。</param>
+        public void ReleaseEntityGroup(string entityGroupName, float expireTime = 1f)
         {
             var entityGroup = GetEntityGroup(entityGroupName);
 
-            ReleaseEntityGroup(entityGroup);
+            ReleaseEntityGroup(entityGroup, expireTime);
         }
     }
 }
