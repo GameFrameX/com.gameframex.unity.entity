@@ -1,3 +1,10 @@
+# [2.3.0](https://github.com/gameframex/com.gameframex.unity.entity/compare/2.2.0...2.3.0) (2026-01-19)
+
+
+### Features
+
+* **实体管理:** 为实体组释放方法添加过期时间参数 ([1f8acdf](https://github.com/gameframex/com.gameframex.unity.entity/commit/1f8acdf87812799bfe4301d2dd85a317d88381a4))
+
 # [2.2.0](https://github.com/gameframex/com.gameframex.unity.entity/compare/2.1.0...2.2.0) (2026-01-19)
 
 
