@@ -1,3 +1,10 @@
+# [2.2.0](https://github.com/gameframex/com.gameframex.unity.entity/compare/2.1.0...2.2.0) (2026-01-19)
+
+
+### Features
+
+* **实体管理:** 添加释放实体组功能 ([64737b4](https://github.com/gameframex/com.gameframex.unity.entity/commit/64737b4beb8be3cbbc5e511d7636316dba96a8fe))
+
 # [2.1.0](https://github.com/gameframex/com.gameframex.unity.entity/compare/2.0.1...2.1.0) (2025-12-23)
 
 
