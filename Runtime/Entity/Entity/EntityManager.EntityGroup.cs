@@ -83,10 +83,7 @@ namespace GameFrameX.Entity.Runtime
             /// </summary>
             public string Name
             {
-                get
-                {
-                    return m_Name;
-                }
+                get { return m_Name; }
             }
 
             /// <summary>
@@ -94,10 +91,7 @@ namespace GameFrameX.Entity.Runtime
             /// </summary>
             public int EntityCount
             {
-                get
-                {
-                    return m_Entities.Count;
-                }
+                get { return m_Entities.Count; }
             }
 
             /// <summary>
@@ -105,14 +99,8 @@ namespace GameFrameX.Entity.Runtime
             /// </summary>
             public float InstanceAutoReleaseInterval
             {
-                get
-                {
-                    return m_InstancePool.AutoReleaseInterval;
-                }
-                set
-                {
-                    m_InstancePool.AutoReleaseInterval = value;
-                }
+                get { return m_InstancePool.AutoReleaseInterval; }
+                set { m_InstancePool.AutoReleaseInterval = value; }
             }
 
             /// <summary>
@@ -120,14 +108,8 @@ namespace GameFrameX.Entity.Runtime
             /// </summary>
             public int InstanceCapacity
             {
-                get
-                {
-                    return m_InstancePool.Capacity;
-                }
-                set
-                {
-                    m_InstancePool.Capacity = value;
-                }
+                get { return m_InstancePool.Capacity; }
+                set { m_InstancePool.Capacity = value; }
             }
 
             /// <summary>
@@ -135,14 +117,8 @@ namespace GameFrameX.Entity.Runtime
             /// </summary>
             public float InstanceExpireTime
             {
-                get
-                {
-                    return m_InstancePool.ExpireTime;
-                }
-                set
-                {
-                    m_InstancePool.ExpireTime = value;
-                }
+                get { return m_InstancePool.ExpireTime; }
+                set { m_InstancePool.ExpireTime = value; }
             }
 
             /// <summary>
@@ -150,14 +126,8 @@ namespace GameFrameX.Entity.Runtime
             /// </summary>
             public int InstancePriority
             {
-                get
-                {
-                    return m_InstancePool.Priority;
-                }
-                set
-                {
-                    m_InstancePool.Priority = value;
-                }
+                get { return m_InstancePool.Priority; }
+                set { m_InstancePool.Priority = value; }
             }
 
             /// <summary>
@@ -165,10 +135,7 @@ namespace GameFrameX.Entity.Runtime
             /// </summary>
             public IEntityGroupHelper Helper
             {
-                get
-                {
-                    return m_EntityGroupHelper;
-                }
+                get { return m_EntityGroupHelper; }
             }
 
             /// <summary>
@@ -187,6 +154,7 @@ namespace GameFrameX.Entity.Runtime
                     m_CachedNode = null;
                 }
             }
+
 
             /// <summary>
             /// 实体组中是否存在实体。

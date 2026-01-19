@@ -293,6 +293,17 @@ namespace GameFrameX.Entity.Runtime
         void HideAllLoadingEntities();
 
         /// <summary>
+        /// 释放所有实体组。
+        /// </summary>
+        void ReleaseAllEntityGroups();
+
+        /// <summary>
+        /// 释放实体组。
+        /// </summary>
+        /// <param name="entityGroupName">实体组名称。</param>
+        void ReleaseEntityGroup(string entityGroupName);
+
+        /// <summary>
         /// 获取父实体。
         /// </summary>
         /// <param name="childEntityId">要获取父实体的子实体的实体编号。</param>

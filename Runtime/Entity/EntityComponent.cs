@@ -540,6 +540,23 @@ namespace GameFrameX.Entity.Runtime
         }
 
         /// <summary>
+        /// 释放所有实体组。
+        /// </summary>
+        public void ReleaseAllEntityGroups()
+        {
+            m_EntityManager.ReleaseAllEntityGroups();
+        }
+
+        /// <summary>
+        /// 释放实体组。
+        /// </summary>
+        /// <param name="entityGroupName">实体组名称。</param>
+        public void ReleaseEntityGroup(string entityGroupName)
+        {
+            m_EntityManager.ReleaseEntityGroup(entityGroupName);
+        }
+
+        /// <summary>
         /// 隐藏所有已加载的实体。
         /// </summary>
         public void HideAllLoadedEntities()

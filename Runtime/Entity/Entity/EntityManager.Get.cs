@@ -460,5 +460,45 @@ namespace GameFrameX.Entity.Runtime
 
             GetChildEntities(parentEntity.Id, results);
         }
+
+        /// <summary>
+        /// 释放所有实体组。
+        /// </summary>
+        public void ReleaseAllEntityGroups()
+        {
+            var groupList = new List<IEntityGroup>(32);
+            GetAllEntityGroups(groupList);
+            foreach (var entityGroup in groupList)
+            {
+                ReleaseEntityGroup(entityGroup);
+            }
+        }
+
+        /// <summary>
+        /// 释放实体组。
+        /// </summary>
+        /// <param name="entityGroup">实体组。</param>
+        private static void ReleaseEntityGroup(IEntityGroup entityGroup)
+        {
+            if (entityGroup == null)
+            {
+                return;
+            }
+
+            var currentExpireTime = entityGroup.InstanceExpireTime;
+            entityGroup.InstanceExpireTime = 0f;
+            entityGroup.InstanceExpireTime = currentExpireTime;
+        }
+
+        /// <summary>
+        /// 释放实体组。
+        /// </summary>
+        /// <param name="entityGroupName">实体组名称。</param>
+        public void ReleaseEntityGroup(string entityGroupName)
+        {
+            var entityGroup = GetEntityGroup(entityGroupName);
+
+            ReleaseEntityGroup(entityGroup);
+        }
     }
 }
