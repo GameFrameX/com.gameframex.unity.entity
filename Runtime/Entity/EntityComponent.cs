@@ -69,7 +69,7 @@ namespace GameFrameX.Entity.Runtime
 
         [SerializeField] private EntityGroup[] m_EntityGroups = null;
         [SerializeField] private int m_DefaultCapacity = 512;
-        [SerializeField] private float m_DefaultExpireTime = float.MaxValue;
+        [SerializeField] private float m_DefaultExpireTime = 3600f;
 
         /// <summary>
         /// 获取实体数量。
