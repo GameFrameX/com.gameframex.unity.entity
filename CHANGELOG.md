@@ -1,3 +1,17 @@
+# [2.4.0](https://github.com/gameframex/com.gameframex.unity.entity/compare/2.3.0...2.4.0) (2026-03-05)
+
+
+### Bug Fixes
+
+* **实体组件:** 将默认过期时间从极大值改为3600秒 ([fc8d84a](https://github.com/gameframex/com.gameframex.unity.entity/commit/fc8d84aab1d1c223df866b5d5834e10e58044fcd))
+
+
+### Features
+
+* **Entity:** 增加实体组默认容量和过期时间配置 ([06e0a48](https://github.com/gameframex/com.gameframex.unity.entity/commit/06e0a48e155257cfe818492cea0917ef964b97de))
+* **Inspector:** 为实体组件检视器添加默认容量和过期时间配置 ([27edc8a](https://github.com/gameframex/com.gameframex.unity.entity/commit/27edc8add99d72be1d9bae4ff25302db76cf67a3))
+* **实体组件:** 为实体实例对象池添加默认容量和过期时间的可配置属性 ([3c40983](https://github.com/gameframex/com.gameframex.unity.entity/commit/3c40983ce5d63cf0797c254eb2dcba76645f6de9))
+
 # [2.3.0](https://github.com/gameframex/com.gameframex.unity.entity/compare/2.2.0...2.3.0) (2026-01-19)
 
 
