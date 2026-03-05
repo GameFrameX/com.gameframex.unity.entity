@@ -1,3 +1,10 @@
+## [2.4.1](https://github.com/gameframex/com.gameframex.unity.entity/compare/2.4.0...2.4.1) (2026-03-05)
+
+
+### Bug Fixes
+
+* **EntityManager:** 修复实体资源加载成功判断条件 ([3dc46de](https://github.com/gameframex/com.gameframex.unity.entity/commit/3dc46de61ba0b4bd8e7e0e3197ae95030d00dd39))
+
 # [2.4.0](https://github.com/gameframex/com.gameframex.unity.entity/compare/2.3.0...2.4.0) (2026-03-05)
 
 
