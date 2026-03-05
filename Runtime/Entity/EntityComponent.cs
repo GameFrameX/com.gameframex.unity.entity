@@ -68,7 +68,9 @@ namespace GameFrameX.Entity.Runtime
         [SerializeField] private EntityGroupHelperBase m_CustomEntityGroupHelper = null;
 
         [SerializeField] private EntityGroup[] m_EntityGroups = null;
+
         [SerializeField] private int m_DefaultCapacity = 512;
+
         [SerializeField] private float m_DefaultExpireTime = 3600f;
 
         /// <summary>
@@ -85,6 +87,24 @@ namespace GameFrameX.Entity.Runtime
         public int EntityGroupCount
         {
             get { return m_EntityManager.EntityGroupCount; }
+        }
+
+        /// <summary>
+        /// 获取或设置实体实例对象池默认容量。
+        /// </summary>
+        public int DefaultCapacity
+        {
+            get { return m_DefaultCapacity; }
+            set { m_DefaultCapacity = value; }
+        }
+
+        /// <summary>
+        /// 获取或设置实体实例对象池默认过期时间（秒）。
+        /// </summary>
+        public float DefaultExpireTime
+        {
+            get { return m_DefaultExpireTime; }
+            set { m_DefaultExpireTime = value; }
         }
 
         /// <summary>
