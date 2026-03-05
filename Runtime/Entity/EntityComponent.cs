@@ -48,7 +48,6 @@ namespace GameFrameX.Entity.Runtime
     public sealed partial class EntityComponent : GameFrameworkComponent
     {
         private const int DefaultPriority = 0;
-
         private IEntityManager m_EntityManager = null;
         private EventComponent m_EventComponent = null;
 
@@ -69,6 +68,8 @@ namespace GameFrameX.Entity.Runtime
         [SerializeField] private EntityGroupHelperBase m_CustomEntityGroupHelper = null;
 
         [SerializeField] private EntityGroup[] m_EntityGroups = null;
+        [SerializeField] private int m_DefaultCapacity = 512;
+        [SerializeField] private float m_DefaultExpireTime = float.MaxValue;
 
         /// <summary>
         /// 获取实体数量。
@@ -205,6 +206,17 @@ namespace GameFrameX.Entity.Runtime
         public void GetAllEntityGroups(List<IEntityGroup> results)
         {
             m_EntityManager.GetAllEntityGroups(results);
+        }
+
+        /// <summary>
+        /// 增加实体组。
+        /// </summary>
+        /// <param name="entityGroupName">实体组名称。</param>
+        /// <param name="instanceAutoReleaseInterval">实体实例对象池自动释放可释放对象的间隔秒数。</param>
+        /// <returns>是否增加实体组成功。</returns>
+        public bool AddEntityGroup(string entityGroupName, float instanceAutoReleaseInterval)
+        {
+            return AddEntityGroup(entityGroupName, instanceAutoReleaseInterval, m_DefaultCapacity, m_DefaultExpireTime, DefaultPriority);
         }
 
         /// <summary>
