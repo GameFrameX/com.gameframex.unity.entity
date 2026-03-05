@@ -43,6 +43,8 @@ namespace GameFrameX.Entity.Editor
         private SerializedProperty m_EnableShowEntityDependencyAssetEvent = null;
         private SerializedProperty m_InstanceRoot = null;
         private SerializedProperty m_EntityGroups = null;
+        private SerializedProperty m_DefaultCapacity = null;
+        private SerializedProperty m_DefaultExpireTime = null;
 
         private HelperInfo<EntityHelperBase> m_EntityHelperInfo = new HelperInfo<EntityHelperBase>("Entity");
         private HelperInfo<EntityGroupHelperBase> m_EntityGroupHelperInfo = new HelperInfo<EntityGroupHelperBase>("EntityGroup");
@@ -62,6 +64,8 @@ namespace GameFrameX.Entity.Editor
                 EditorGUILayout.PropertyField(m_InstanceRoot);
                 m_EntityHelperInfo.Draw();
                 m_EntityGroupHelperInfo.Draw();
+                EditorGUILayout.IntSlider(m_DefaultCapacity, 1, 4096);
+                EditorGUILayout.Slider(m_DefaultExpireTime, 0f, 3600f);
                 EditorGUILayout.PropertyField(m_EntityGroups, true);
             }
             EditorGUI.EndDisabledGroup();
@@ -88,6 +92,8 @@ namespace GameFrameX.Entity.Editor
             m_EnableShowEntityDependencyAssetEvent = serializedObject.FindProperty("m_EnableShowEntityDependencyAssetEvent");
             m_InstanceRoot = serializedObject.FindProperty("m_InstanceRoot");
             m_EntityGroups = serializedObject.FindProperty("m_EntityGroups");
+            m_DefaultCapacity = serializedObject.FindProperty("m_DefaultCapacity");
+            m_DefaultExpireTime = serializedObject.FindProperty("m_DefaultExpireTime");
 
             m_EntityHelperInfo.Init(serializedObject);
             m_EntityGroupHelperInfo.Init(serializedObject);
