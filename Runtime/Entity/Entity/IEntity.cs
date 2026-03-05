@@ -39,34 +39,27 @@ namespace GameFrameX.Entity.Runtime
         /// <summary>
         /// 获取实体编号。
         /// </summary>
-        int Id
-        {
-            get;
-        }
+        int Id { get; }
 
         /// <summary>
         /// 获取实体资源名称。
         /// </summary>
-        string EntityAssetName
-        {
-            get;
-        }
+        string EntityAssetName { get; }
 
         /// <summary>
         /// 获取实体实例。
         /// </summary>
-        object Handle
-        {
-            get;
-        }
+        object Handle { get; }
 
         /// <summary>
         /// 获取实体所属的实体组。
         /// </summary>
-        IEntityGroup EntityGroup
-        {
-            get;
-        }
+        IEntityGroup EntityGroup { get; }
+
+        /// <summary>
+        /// 获取实体逻辑。
+        /// </summary>
+        EntityLogic Logic { get; }
 
         /// <summary>
         /// 实体初始化。
