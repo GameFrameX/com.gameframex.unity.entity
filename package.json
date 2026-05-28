@@ -18,7 +18,10 @@
     "email": "alianblank@outlook.com",
     "url": "https://gameframex.doc.alianblank.com"
   },
-  "dependencies": {},
+  "dependencies": {
+    "com.gameframex.unity.asset": "2.5.0",
+    "com.gameframex.unity.event": "1.1.0"
+  },
   "publishConfig": {
     "access": "public",
     "registry": "https://npm.cnb.cool/GameFrameX/npm/-/packages/"
