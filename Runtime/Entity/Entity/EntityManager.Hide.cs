@@ -289,7 +289,7 @@ namespace GameFrameX.Entity.Runtime
             {
                 HideEntityCompleteEventArgs hideEntityCompleteEventArgs = HideEntityCompleteEventArgs.Create(entity.Id, entity.EntityAssetName, entityGroup, userData);
                 m_HideEntityCompleteEventHandler(this, hideEntityCompleteEventArgs);
-                // ReferencePool.Release(hideEntityCompleteEventArgs);
+                ReferencePool.Release(hideEntityCompleteEventArgs);
             }
 
             m_RecycleQueue.Enqueue(entityInfo);
