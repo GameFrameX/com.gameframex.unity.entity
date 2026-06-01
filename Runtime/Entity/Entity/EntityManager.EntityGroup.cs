@@ -46,6 +46,7 @@ namespace GameFrameX.Entity.Runtime
             private readonly IEntityGroupHelper m_EntityGroupHelper;
             private readonly IObjectPool<EntityInstanceObject> m_InstancePool;
             private readonly GameFrameworkLinkedList<IEntity> m_Entities;
+            private readonly Dictionary<int, IEntity> m_EntityMap;
             private LinkedListNode<IEntity> m_CachedNode;
 
             /// <summary>
@@ -75,6 +76,7 @@ namespace GameFrameX.Entity.Runtime
                 m_InstancePool = objectPoolManager.CreateSingleSpawnObjectPool<EntityInstanceObject>(Utility.Text.Format("Entity Instance Pool ({0})", name), instanceCapacity, instanceExpireTime, instancePriority);
                 m_InstancePool.AutoReleaseInterval = instanceAutoReleaseInterval;
                 m_Entities = new GameFrameworkLinkedList<IEntity>();
+                m_EntityMap = new Dictionary<int, IEntity>();
                 m_CachedNode = null;
             }
 
@@ -155,7 +157,6 @@ namespace GameFrameX.Entity.Runtime
                 }
             }
 
-
             /// <summary>
             /// 实体组中是否存在实体。
             /// </summary>
@@ -163,15 +164,7 @@ namespace GameFrameX.Entity.Runtime
             /// <returns>实体组中是否存在实体。</returns>
             public bool HasEntity(int entityId)
             {
-                foreach (IEntity entity in m_Entities)
-                {
-                    if (entity.Id == entityId)
-                    {
-                        return true;
-                    }
-                }
-
-                return false;
+                return m_EntityMap.ContainsKey(entityId);
             }
 
             /// <summary>
@@ -204,15 +197,9 @@ namespace GameFrameX.Entity.Runtime
             /// <returns>要获取的实体。</returns>
             public IEntity GetEntity(int entityId)
             {
-                foreach (IEntity entity in m_Entities)
-                {
-                    if (entity.Id == entityId)
-                    {
-                        return entity;
-                    }
-                }
-
-                return null;
+                IEntity entity;
+                m_EntityMap.TryGetValue(entityId, out entity);
+                return entity;
             }
 
             /// <summary>
@@ -329,6 +316,7 @@ namespace GameFrameX.Entity.Runtime
             public void AddEntity(IEntity entity)
             {
                 m_Entities.AddLast(entity);
+                m_EntityMap[entity.Id] = entity;
             }
 
             /// <summary>
@@ -346,6 +334,8 @@ namespace GameFrameX.Entity.Runtime
                 {
                     Log.Fatal(Utility.Text.Format("Entity group '{0}' not exists specified entity '[{1}]{2}'.", m_Name, entity.Id, entity.EntityAssetName));
                 }
+
+                m_EntityMap.Remove(entity.Id);
             }
 
             public void RegisterEntityInstanceObject(EntityInstanceObject obj, bool spawned)
