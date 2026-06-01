@@ -487,9 +487,7 @@ namespace GameFrameX.Entity.Runtime
                 return;
             }
 
-            var currentExpireTime = entityGroup.InstanceExpireTime;
             entityGroup.InstanceExpireTime = expireTime;
-            entityGroup.InstanceExpireTime = currentExpireTime;
         }
 
         /// <summary>
