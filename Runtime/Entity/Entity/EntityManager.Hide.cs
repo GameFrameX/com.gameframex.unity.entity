@@ -109,12 +109,14 @@ namespace GameFrameX.Entity.Runtime
         /// <param name="userData">用户自定义数据。</param>
         public void HideAllLoadedEntities(object userData)
         {
-            while (m_EntityInfos.Count > 0)
+            int[] entityIds = new int[m_EntityInfos.Count];
+            m_EntityInfos.Keys.CopyTo(entityIds, 0);
+            for (int i = 0; i < entityIds.Length; i++)
             {
-                foreach (KeyValuePair<int, EntityInfo> entityInfo in m_EntityInfos)
+                EntityInfo entityInfo = m_EntityInfos[entityIds[i]];
+                if (entityInfo != null)
                 {
-                    InternalHideEntity(entityInfo.Value, userData);
-                    break;
+                    InternalHideEntity(entityInfo, userData);
                 }
             }
         }
@@ -131,7 +133,6 @@ namespace GameFrameX.Entity.Runtime
 
             m_EntitiesBeingLoaded.Clear();
         }
-
 
         /// <summary>
         /// 解除子实体。
