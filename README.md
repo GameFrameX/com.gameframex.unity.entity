@@ -12,7 +12,7 @@ All-in-One Solution for Indie Game Development · Empowering Indie Developers' D
 
 [Documentation](https://gameframex.doc.alianblank.com) · [Quick Start](#quick-start) · [QQ Group](https://qm.qq.com/q/5kbDVBdUeS) · **Language**
 
-[English](README.md) | [简体中文](README.zh-CN.md) | [繁體中文](README.zh-TW.md) | [日本語](README.ja.md) | [한국어](README.ko.md)
+**English** | [简体中文](README.zh-CN.md) | [繁體中文](README.zh-TW.md) | [日本語](README.ja.md) | [한국어](README.ko.md)
 
 </div>
 
@@ -26,16 +26,26 @@ The **Entity Component** provides interfaces for managing entity objects within 
 
 ### Installation
 
-Choose one of the following methods:
+Edit your Unity project's `Packages/manifest.json` and add the `scopedRegistries` section:
 
-1. Add to `manifest.json` dependencies:
-   ```json
-   {
-      "com.gameframex.unity.entity": "https://github.com/AlianBlank/com.gameframex.unity.entity.git"
-   }
-   ```
-2. Use **Packages Manager** in Unity with **Git URL**: `https://github.com/AlianBlank/com.gameframex.unity.entity.git`
-3. Clone the repository into your Unity project's `Packages` directory. It will be loaded automatically.
+```json
+{
+  "scopedRegistries": [
+    {
+      "name": "GameFrameX",
+      "url": "https://gameframex.upm.alianblank.uk",
+      "scopes": [
+        "com.gameframex"
+      ]
+    }
+  ],
+  "dependencies": {
+    "com.gameframex.unity.entity": "2.4.2"
+  }
+}
+```
+
+`scopes` controls which packages are resolved through this registry. Only packages whose names start with `com.gameframex` will be fetched from it.
 
 ## Documentation & Resources
 
@@ -51,4 +61,4 @@ See [Releases](https://github.com/gameframex/com.gameframex.unity.entity/release
 
 ## License
 
-This project is licensed under the [MIT License](https://github.com/gameframex/com.gameframex.unity.entity/blob/main/LICENSE).
+This project is licensed under the terms in [LICENSE](LICENSE.md).

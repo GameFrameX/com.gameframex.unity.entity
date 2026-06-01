@@ -24,16 +24,28 @@
 
 ## 快速开始
 
-### 安装方式（任选其一）
+### 安装方式
 
-1. 直接在 `manifest.json` 的 `dependencies` 节点下添加以下内容：
-   ```json
-   {
-      "com.gameframex.unity.entity": "https://github.com/AlianBlank/com.gameframex.unity.entity.git"
-   }
-   ```
-2. 在 Unity 的 `Packages Manager` 中使用 `Git URL` 的方式添加库，地址为：`https://github.com/AlianBlank/com.gameframex.unity.entity.git`
-3. 直接下载仓库放置到 Unity 项目的 `Packages` 目录下，会自动加载识别。
+编辑 Unity 项目的 `Packages/manifest.json`，添加 `scopedRegistries` 部分：
+
+```json
+{
+  "scopedRegistries": [
+    {
+      "name": "GameFrameX",
+      "url": "https://gameframex.upm.alianblank.uk",
+      "scopes": [
+        "com.gameframex"
+      ]
+    }
+  ],
+  "dependencies": {
+    "com.gameframex.unity.entity": "2.4.2"
+  }
+}
+```
+
+`scopes` 控制哪些包通过此注册表解析。只有以 `com.gameframex` 开头的包才会从这个注册表获取。
 
 ## 文档与资源
 
@@ -49,4 +61,4 @@
 
 ## 开源协议
 
-本项目基于 [MIT 协议](https://github.com/gameframex/com.gameframex.unity.entity/blob/main/LICENSE) 开源。
+本项目采用 [LICENSE](LICENSE.md) 中声明的开源协议。
