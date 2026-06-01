@@ -76,7 +76,7 @@ namespace GameFrameX.Entity.Runtime
                 m_InstancePool = objectPoolManager.CreateSingleSpawnObjectPool<EntityInstanceObject>(Utility.Text.Format("Entity Instance Pool ({0})", name), instanceCapacity, instanceExpireTime, instancePriority);
                 m_InstancePool.AutoReleaseInterval = instanceAutoReleaseInterval;
                 m_Entities = new GameFrameworkLinkedList<IEntity>();
-                m_EntityMap = new Dictionary<int, IEntity>();
+                m_EntityMap = new Dictionary<int, IEntity>(instanceCapacity);
                 m_CachedNode = null;
             }
 
