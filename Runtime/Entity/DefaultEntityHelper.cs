@@ -29,7 +29,6 @@
 //  Official Documentation: https://gameframex.doc.alianblank.com/
 // ==========================================================================================
 
-using GameFrameX.Asset.Runtime;
 using GameFrameX.Runtime;
 using UnityEngine;
 using YooAsset;
@@ -41,10 +40,6 @@ namespace GameFrameX.Entity.Runtime
     /// </summary>
     public class DefaultEntityHelper : EntityHelperBase
     {
-        private IAssetManager _assetManager = null;
-
-        private AssetHandle _assetOperationHandle;
-
         /// <summary>
         /// 实例化实体。
         /// </summary>
@@ -52,10 +47,10 @@ namespace GameFrameX.Entity.Runtime
         /// <returns>实例化后的实体。</returns>
         public override object InstantiateEntity(object entityAsset)
         {
-            _assetOperationHandle = entityAsset as AssetHandle;
-            if (_assetOperationHandle != null)
+            AssetHandle assetOperationHandle = entityAsset as AssetHandle;
+            if (assetOperationHandle != null)
             {
-                return _assetOperationHandle.InstantiateSync();
+                return assetOperationHandle.InstantiateSync();
             }
             else
             {
@@ -102,16 +97,6 @@ namespace GameFrameX.Entity.Runtime
 
             assetOperationHandle.Release();
             Destroy((Object)entityInstance);
-        }
-
-        private void Start()
-        {
-            _assetManager = GameFrameworkEntry.GetModule<IAssetManager>();
-            if (_assetManager == null)
-            {
-                Log.Fatal("Resource component is invalid.");
-                return;
-            }
         }
     }
 }
