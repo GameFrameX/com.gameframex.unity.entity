@@ -109,7 +109,13 @@ namespace GameFrameX.Entity.Runtime
                 return;
             }
 
-            ShowEntityInfo showEntityInfo = (ShowEntityInfo)userData;
+            ShowEntityInfo showEntityInfo = userData as ShowEntityInfo;
+            if (showEntityInfo == null)
+            {
+                Log.Error("Entity '{0}' OnInit userData is not ShowEntityInfo.", entityAssetName);
+                return;
+            }
+
             Type entityLogicType = showEntityInfo.EntityLogicType;
             if (entityLogicType == null)
             {
@@ -130,7 +136,7 @@ namespace GameFrameX.Entity.Runtime
                 }
             }
 
-            if (m_EntityLogic==null)
+            if (m_EntityLogic == null)
             {
                 m_EntityLogic = gameObject.AddComponent(entityLogicType) as EntityLogic;
                 if (m_EntityLogic == null)
@@ -155,6 +161,13 @@ namespace GameFrameX.Entity.Runtime
         /// </summary>
         public void OnRecycle()
         {
+            if (m_EntityLogic == null)
+            {
+                Log.Warning("Entity '[{0}]{1}' OnRecycle but entity logic is null.", m_Id, m_EntityAssetName);
+                m_Id = 0;
+                return;
+            }
+
             try
             {
                 m_EntityLogic.OnRecycle();
@@ -174,7 +187,13 @@ namespace GameFrameX.Entity.Runtime
         /// <param name="userData">用户自定义数据。</param>
         public void OnShow(object userData)
         {
-            ShowEntityInfo showEntityInfo = (ShowEntityInfo)userData;
+            ShowEntityInfo showEntityInfo = userData as ShowEntityInfo;
+            if (showEntityInfo == null)
+            {
+                Log.Error("Entity '[{0}]{1}' OnShow userData is not ShowEntityInfo.", m_Id, m_EntityAssetName);
+                return;
+            }
+
             try
             {
                 m_EntityLogic.OnShow(showEntityInfo.UserData);
@@ -209,7 +228,13 @@ namespace GameFrameX.Entity.Runtime
         /// <param name="userData">用户自定义数据。</param>
         public void OnAttached(IEntity childEntity, object userData)
         {
-            AttachEntityInfo attachEntityInfo = (AttachEntityInfo)userData;
+            AttachEntityInfo attachEntityInfo = userData as AttachEntityInfo;
+            if (attachEntityInfo == null)
+            {
+                Log.Error("Entity '[{0}]{1}' OnAttached userData is not AttachEntityInfo.", m_Id, m_EntityAssetName);
+                return;
+            }
+
             try
             {
                 m_EntityLogic.OnAttached(((Entity)childEntity).Logic, attachEntityInfo.ParentTransform, attachEntityInfo.UserData);
@@ -244,7 +269,13 @@ namespace GameFrameX.Entity.Runtime
         /// <param name="userData">用户自定义数据。</param>
         public void OnAttachTo(IEntity parentEntity, object userData)
         {
-            AttachEntityInfo attachEntityInfo = (AttachEntityInfo)userData;
+            AttachEntityInfo attachEntityInfo = userData as AttachEntityInfo;
+            if (attachEntityInfo == null)
+            {
+                Log.Error("Entity '[{0}]{1}' OnAttachTo userData is not AttachEntityInfo.", m_Id, m_EntityAssetName);
+                return;
+            }
+
             try
             {
                 m_EntityLogic.OnAttachTo(((Entity)parentEntity).Logic, attachEntityInfo.ParentTransform, attachEntityInfo.UserData);
