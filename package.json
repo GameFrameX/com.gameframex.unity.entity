@@ -3,7 +3,7 @@
   "displayName": "Game Frame X Entity",
   "category": "GameFrameX",
   "description": "GameFrameX Entity — Unity entity management package. Manages showing, hiding, grouping, and parent-child hierarchy of game entities with async spawning (UniTask-based). Integrates with the asset system for resource loading and object pools for instance reuse, with event notifications for show/hide lifecycle. Docs: https://gameframex.doc.alianblank.com\n\nGameFrameX Entity — Unity 实体管理功能包。管理游戏实体的显示、隐藏、分组与父子层级关系，支持异步生成（基于 UniTask）。集成资源系统进行资源加载，集成对象池实现实例复用，并提供显示/隐藏生命周期的事件通知。文档：https://gameframex.doc.alianblank.com",
-  "version": "2.4.2",
+  "version": "2.4.3",
   "unity": "2019.4",
   "keywords": [
     "GameFrameX",

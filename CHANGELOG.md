@@ -1,3 +1,19 @@
+## [2.4.3](https://github.com/gameframex/com.gameframex.unity.entity/compare/2.4.2...2.4.3) (2026-06-01)
+
+
+### Bug Fixes
+
+* **entity:** userData 安全类型转换与 OnRecycle null 检查防护 ([8fab6e4](https://github.com/gameframex/com.gameframex.unity.entity/commit/8fab6e44edbabe555c64332d8bae4ba332976299))
+* **entity:** 修复 ReleaseEntityGroup 无效的保存恢复逻辑 ([f9deb80](https://github.com/gameframex/com.gameframex.unity.entity/commit/f9deb806b4ae80af9a6fea414679ea3ed186acc4))
+* **entity:** 恢复 EventArgs 引用池释放，优化异常处理和异步取消 ([d4e1215](https://github.com/gameframex/com.gameframex.unity.entity/commit/d4e12159a6e5e9d3885f8e082528f49667212faa))
+
+
+### Performance Improvements
+
+* **entity:** EntityGroup 字典使用 instanceCapacity 作为初始容量 ([f6fa7e3](https://github.com/gameframex/com.gameframex.unity.entity/commit/f6fa7e30f1904441a2d44c34f3379e75d83fc4b9))
+* **entity:** EntityGroup 添加 Dictionary 索引优化 O(1) 查找 ([9e1793b](https://github.com/gameframex/com.gameframex.unity.entity/commit/9e1793bfcacb98cffa0dd084245cba0ec9f2668b))
+* **entity:** HideAllLoadedEntities 优化为 O(n) 批量处理 ([7cb9ad3](https://github.com/gameframex/com.gameframex.unity.entity/commit/7cb9ad3443e225136cdaf983e518822cb2bd8c64))
+
 ## [2.4.2](https://github.com/gameframex/com.gameframex.unity.entity/compare/2.4.1...2.4.2) (2026-05-28)
 
 
