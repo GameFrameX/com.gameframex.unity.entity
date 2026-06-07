@@ -21,7 +21,7 @@ All-in-One Solution for Indie Game Development · Empowering Indie Developers' D
 
 </div>
 
-## 📑 Table of Contents
+## Table of Contents
 - [Project Overview](#project-overview)
 - [Key Features](#key-features)
 - [Quick Start](#quick-start)
@@ -39,21 +39,21 @@ All-in-One Solution for Indie Game Development · Empowering Indie Developers' D
 - [Changelog](#changelog)
 - [License](#license)
 
-## 🏗️ Project Overview
+## Project Overview
 The **Entity Component** provides a complete entity management system for Unity games. It handles entity lifecycle (show, hide, recycle), grouping, parent-child hierarchy, and integrates with the asset system for async resource loading and object pools for instance reuse.
 
 Built on top of the GameFrameX framework, it uses UniTask for async operations and provides a Manager-Component-Helper layered architecture.
 
-## ✨ Key Features
-- **🎯 Async Entity Spawning** — Load and instantiate entities asynchronously via UniTask, with progress and dependency callbacks
-- **📦 Entity Grouping** — Organize entities into groups with individual object pool settings (capacity, expire time, auto-release interval)
-- **🔗 Parent-Child Hierarchy** — Attach/detach child entities with automatic Transform parenting
-- **♻️ Object Pool Integration** — Reuse entity instances through object pools for memory efficiency
-- **📢 Event-Driven Lifecycle** — Subscribe to Show/Hide/Update/DependencyAsset events for reactive workflows
-- **🧩 EntityLogic Pattern** — Implement business logic by subclassing `EntityLogic` with OnInit/OnShow/OnHide/OnUpdate lifecycle methods
-- **🔒 Instance Management** — Lock entity instances or adjust priority for pool eviction control
+## Key Features
+- **Async Entity Spawning** — Load and instantiate entities asynchronously via UniTask, with progress and dependency callbacks
+- **Entity Grouping** — Organize entities into groups with individual object pool settings (capacity, expire time, auto-release interval)
+- **Parent-Child Hierarchy** — Attach/detach child entities with automatic Transform parenting
+- **Object Pool Integration** — Reuse entity instances through object pools for memory efficiency
+- **Event-Driven Lifecycle** — Subscribe to Show/Hide/Update/DependencyAsset events for reactive workflows
+- **EntityLogic Pattern** — Implement business logic by subclassing `EntityLogic` with OnInit/OnShow/OnHide/OnUpdate lifecycle methods
+- **Instance Management** — Lock entity instances or adjust priority for pool eviction control
 
-## 🚀 Quick Start
+## Quick Start
 ### Installation
 Edit your Unity project's `Packages/manifest.json` and add the `scopedRegistries` section:
 
@@ -76,7 +76,7 @@ Edit your Unity project's `Packages/manifest.json` and add the `scopedRegistries
 
 `scopes` controls which packages are resolved through this registry. Only packages whose names start with `com.gameframex` will be fetched from it.
 
-## 📖 Usage Examples
+## Usage Examples
 
 ### 1. Define EntityLogic
 Create a subclass of `EntityLogic` to implement your entity's behavior:
@@ -175,7 +175,7 @@ entityComponent.HideEntityComplete += (sender, e) =>
 };
 ```
 
-## 🔄 Entity Lifecycle
+## Entity Lifecycle
 
 | Stage | Method | Description |
 |-------|--------|-------------|
@@ -191,7 +191,7 @@ Parent-child events:
 | Attach | `OnAttached(childEntity, parentTransform, userData)` | `OnAttachTo(parentEntity, parentTransform, userData)` |
 | Detach | `OnDetached(childEntity, userData)` | `OnDetachFrom(parentEntity, userData)` |
 
-## 🏛️ Architecture
+## Architecture
 
 ```
 Runtime/
@@ -217,15 +217,15 @@ Runtime/
 └── Editor/Inspector/            # Custom Inspector
 ```
 
-## 📚 Documentation & Resources
+## Documentation & Resources
 
 - [Documentation](https://gameframex.doc.alianblank.com)
 
-## 💬 Community & Support
+## Community & Support
 
 - QQ Group: 467608841 / 233840761
 
-## 📋 Changelog
+## Changelog
 
 See [Releases](https://github.com/gameframex/com.gameframex.unity.entity/releases) for changelog.
 

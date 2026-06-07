@@ -21,7 +21,7 @@
 
 </div>
 
-## 📑 目录
+## 目录
 
 - [项目简介](#项目简介)
 - [核心特性](#核心特性)
@@ -40,23 +40,23 @@
 - [更新日志](#更新日志)
 - [开源协议](#开源协议)
 
-## 🏗️ 项目简介
+## 项目简介
 
 **Entity 实体对象组件** 提供了完整的 Unity 游戏实体管理系统。它处理实体生命周期（显示、隐藏、回收）、分组管理、父子层级关系，并集成资源系统实现异步资源加载，集成对象池实现实例复用。
 
 基于 GameFrameX 框架构建，使用 UniTask 实现异步操作，采用 Manager-Component-Helper 分层架构。
 
-## ✨ 核心特性
+## 核心特性
 
-- **🎯 异步实体生成** — 基于 UniTask 异步加载并实例化实体，支持进度回调和依赖资源回调
-- **📦 实体分组** — 将实体组织到分组中，每个分组可独立配置对象池参数（容量、过期时间、自动释放间隔）
-- **🔗 父子层级** — 附加/解除子实体，自动处理 Transform 父子关系
-- **♻️ 对象池集成** — 通过对象池复用实体实例，提升内存效率
-- **📢 事件驱动生命周期** — 订阅显示/隐藏/更新/依赖资源等事件，实现响应式工作流
-- **🧩 EntityLogic 模式** — 通过继承 `EntityLogic` 实现业务逻辑，提供 OnInit/OnShow/OnHide/OnUpdate 等生命周期方法
-- **🔒 实例管理** — 锁定实体实例或调整优先级以控制对象池回收策略
+- **异步实体生成** — 基于 UniTask 异步加载并实例化实体，支持进度回调和依赖资源回调
+- **实体分组** — 将实体组织到分组中，每个分组可独立配置对象池参数（容量、过期时间、自动释放间隔）
+- **父子层级** — 附加/解除子实体，自动处理 Transform 父子关系
+- **对象池集成** — 通过对象池复用实体实例，提升内存效率
+- **事件驱动生命周期** — 订阅显示/隐藏/更新/依赖资源等事件，实现响应式工作流
+- **EntityLogic 模式** — 通过继承 `EntityLogic` 实现业务逻辑，提供 OnInit/OnShow/OnHide/OnUpdate 等生命周期方法
+- **实例管理** — 锁定实体实例或调整优先级以控制对象池回收策略
 
-## 🚀 快速开始
+## 快速开始
 
 ### 安装
 
@@ -81,7 +81,7 @@
 
 `scopes` 控制哪些包通过此注册表解析。只有以 `com.gameframex` 开头的包才会从这个注册表获取。
 
-## 📖 使用示例
+## 使用示例
 
 ### 1. 定义 EntityLogic
 
@@ -185,7 +185,7 @@ entityComponent.HideEntityComplete += (sender, e) =>
 };
 ```
 
-## 🔄 实体生命周期
+## 实体生命周期
 
 | 阶段 | 方法 | 说明 |
 |------|------|------|
@@ -202,7 +202,7 @@ entityComponent.HideEntityComplete += (sender, e) =>
 | 附加 | `OnAttached(childEntity, parentTransform, userData)` | `OnAttachTo(parentEntity, parentTransform, userData)` |
 | 解除 | `OnDetached(childEntity, userData)` | `OnDetachFrom(parentEntity, userData)` |
 
-## 🏛️ 架构
+## 架构
 
 ```
 Runtime/
@@ -228,18 +228,18 @@ Runtime/
 └── Editor/Inspector/            # 自定义检视器
 ```
 
-## 📚 文档与资源
+## 文档与资源
 
 - [文档](https://gameframex.doc.alianblank.com)
 
-## 💬 社区与支持
+## 社区与支持
 
 - QQ群: 467608841 / 233840761
 
-## 📋 更新日志
+## 更新日志
 
 查看 [Releases](https://github.com/gameframex/com.gameframex.unity.entity/releases) 了解更新日志。
 
-## 📄 开源协议
+## 开源协议
 
 本项目采用 [LICENSE](LICENSE.md) 中声明的开源协议。

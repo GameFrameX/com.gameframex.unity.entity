@@ -21,7 +21,7 @@
 
 </div>
 
-## 📑 目錄
+## 目錄
 
 - [項目簡介](#項目簡介)
 - [核心特性](#核心特性)
@@ -40,23 +40,23 @@
 - [更新日誌](#更新日誌)
 - [開源協議](#開源協議)
 
-## 🏗️ 項目簡介
+## 項目簡介
 
 **Entity 實體物件組件** 提供了完整的 Unity 遊戲實體管理系統。它處理實體生命週期（顯示、隱藏、回收）、分組管理、父子層級關係，並整合資源系統實現異步資源載入，整合物件池實現實例復用。
 
 基於 GameFrameX 框架構建，使用 UniTask 實現異步操作，採用 Manager-Component-Helper 分層架構。
 
-## ✨ 核心特性
+## 核心特性
 
-- **🎯 異步實體生成** — 基於 UniTask 異步載入並實例化實體，支援進度回調和依賴資源回調
-- **📦 實體分組** — 將實體組織到分組中，每個分組可獨立設定物件池參數（容量、過期時間、自動釋放間隔）
-- **🔗 父子層級** — 附加/解除子實體，自動處理 Transform 父子關係
-- **♻️ 物件池整合** — 透過物件池復用實體實例，提升記憶體效率
-- **📢 事件驅動生命週期** — 訂閱顯示/隱藏/更新/依賴資源等事件，實現響應式工作流
-- **🧩 EntityLogic 模式** — 透過繼承 `EntityLogic` 實現業務邏輯，提供 OnInit/OnShow/OnHide/OnUpdate 等生命週期方法
-- **🔒 實例管理** — 鎖定實體實例或調整優先級以控制物件池回收策略
+- **異步實體生成** — 基於 UniTask 異步載入並實例化實體，支援進度回調和依賴資源回調
+- **實體分組** — 將實體組織到分組中，每個分組可獨立設定物件池參數（容量、過期時間、自動釋放間隔）
+- **父子層級** — 附加/解除子實體，自動處理 Transform 父子關係
+- **物件池整合** — 透過物件池復用實體實例，提升記憶體效率
+- **事件驅動生命週期** — 訂閱顯示/隱藏/更新/依賴資源等事件，實現響應式工作流
+- **EntityLogic 模式** — 透過繼承 `EntityLogic` 實現業務邏輯，提供 OnInit/OnShow/OnHide/OnUpdate 等生命週期方法
+- **實例管理** — 鎖定實體實例或調整優先級以控制物件池回收策略
 
-## 🚀 快速開始
+## 快速開始
 
 ### 安裝
 
@@ -81,7 +81,7 @@
 
 `scopes` 控制哪些套件透過此註冊表解析。只有以 `com.gameframex` 開頭的套件才會從這個註冊表取得。
 
-## 📖 使用範例
+## 使用範例
 
 ### 1. 定義 EntityLogic
 
@@ -185,7 +185,7 @@ entityComponent.HideEntityComplete += (sender, e) =>
 };
 ```
 
-## 🔄 實體生命週期
+## 實體生命週期
 
 | 階段 | 方法 | 說明 |
 |------|------|------|
@@ -202,7 +202,7 @@ entityComponent.HideEntityComplete += (sender, e) =>
 | 附加 | `OnAttached(childEntity, parentTransform, userData)` | `OnAttachTo(parentEntity, parentTransform, userData)` |
 | 解除 | `OnDetached(childEntity, userData)` | `OnDetachFrom(parentEntity, userData)` |
 
-## 🏛️ 架構
+## 架構
 
 ```
 Runtime/
@@ -228,18 +228,18 @@ Runtime/
 └── Editor/Inspector/            # 自訂檢視器
 ```
 
-## 📚 文檔與資源
+## 文檔與資源
 
 - [文檔](https://gameframex.doc.alianblank.com)
 
-## 💬 社區與支援
+## 社區與支援
 
 - QQ群: 467608841 / 233840761
 
-## 📋 更新日誌
+## 更新日誌
 
 查看 [Releases](https://github.com/gameframex/com.gameframex.unity.entity/releases) 了解更新日誌。
 
-## 📄 開源協議
+## 開源協議
 
 本專案採用 [LICENSE](LICENSE.md) 中聲明的開源協議。
