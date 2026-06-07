@@ -229,6 +229,25 @@ Runtime/
 
 See [Releases](https://github.com/gameframex/com.gameframex.unity.entity/releases) for changelog.
 
+
+## Dependencies
+
+| Package | Description |
+|---------|-------------|
+| `com.gameframex.unity.asset` | 2.5.0 |
+| `com.gameframex.unity.event` | 1.1.0 |
+
+## Documentation & Resources
+
+- [Documentation](https://gameframex.doc.alianblank.com)
+
+## Community & Support
+
+- QQ Group: 467608841 / 233840761
+
+## Changelog
+
+See [Releases](https://github.com/GameFrameX/gameframex/com.gameframex.unity.entity/releases) for changelog.
 ## License
 
 See [LICENSE.md](LICENSE.md) for license information.
