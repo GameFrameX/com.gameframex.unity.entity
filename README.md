@@ -229,6 +229,6 @@ Runtime/
 
 See [Releases](https://github.com/gameframex/com.gameframex.unity.entity/releases) for changelog.
 
-## 📄 License
+## License
 
-This project is licensed under the terms in [LICENSE](LICENSE.md).
+See [LICENSE.md](LICENSE.md) for license information.
