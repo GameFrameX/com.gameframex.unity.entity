@@ -55,27 +55,37 @@ Built on top of the GameFrameX framework, it uses UniTask for async operations a
 
 ## Quick Start
 ### Installation
-Edit your Unity project's `Packages/manifest.json` and add the `scopedRegistries` section:
 
-```json
-{
-  "scopedRegistries": [
-    {
-      "name": "GameFrameX",
-      "url": "https://gameframex.upm.alianblank.uk",
-      "scopes": [
-        "com.gameframex"
-      ]
-    }
-  ],
-  "dependencies": {
-    "com.gameframex.unity.entity": "2.4.2"
-  }
-}
-```
+Choose one of the following methods:
 
-`scopes` controls which packages are resolved through this registry. Only packages whose names start with `com.gameframex` will be fetched from it.
+1. Edit your Unity project's `Packages/manifest.json` and add the `scopedRegistries` section:
+   ```json
+   {
+     "scopedRegistries": [
+       {
+         "name": "GameFrameX",
+         "url": "https://gameframex.upm.alianblank.uk",
+         "scopes": [
+           "com.gameframex"
+         ]
+       }
+     ],
+     "dependencies": {
+       "com.gameframex.unity.entity": "2.4.3"
+     }
+   }
+   ```
 
+   `scopes` controls which packages are resolved through this registry. Only packages whose names start with `com.gameframex` will be fetched from it.
+
+2. Add to `manifest.json` dependencies:
+   ```json
+   {
+      "com.gameframex.unity.entity": "https://github.com/gameframex/com.gameframex.unity.entity.git"
+   }
+   ```
+3. Use **Package Manager** in Unity with **Git URL**: `https://github.com/gameframex/com.gameframex.unity.entity.git`
+4. Clone the repository into your Unity project's `Packages` directory. It will be loaded automatically.
 ## Usage Examples
 
 ### 1. Define EntityLogic
