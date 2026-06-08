@@ -1,3 +1,10 @@
+## [2.4.4](https://github.com/gameframex/com.gameframex.unity.entity/compare/2.4.3...2.4.4) (2026-06-08)
+
+
+### Bug Fixes
+
+* **entity:** 事件处理函数使用 Create 工厂方法创建 EventArgs ([da6a5bf](https://github.com/gameframex/com.gameframex.unity.entity/commit/da6a5bfb84251c39ec15dbaadf53750ab6f08f34))
+
 ## [2.4.3](https://github.com/gameframex/com.gameframex.unity.entity/compare/2.4.2...2.4.3) (2026-06-01)
 
 
