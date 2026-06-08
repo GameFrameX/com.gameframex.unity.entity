@@ -1176,29 +1176,29 @@ namespace GameFrameX.Entity.Runtime
 
         private void OnShowEntitySuccess(object sender, ShowEntitySuccessEventArgs eventArgs)
         {
-            m_EventComponent.Fire(this, eventArgs);
+            m_EventComponent.Fire(this, ShowEntitySuccessEventArgs.Create(eventArgs.Entity, eventArgs.Duration, eventArgs.UserData));
         }
 
         private void OnShowEntityFailure(object sender, ShowEntityFailureEventArgs eventArgs)
         {
             Log.Warning("Show entity failure, entity id '{0}', asset name '{1}', entity group name '{2}', error message '{3}'.",
                         eventArgs.EntityId, eventArgs.EntityAssetName, eventArgs.EntityGroupName, eventArgs.ErrorMessage);
-            m_EventComponent.Fire(this, eventArgs);
+            m_EventComponent.Fire(this, ShowEntityFailureEventArgs.Create(eventArgs.EntityId, eventArgs.EntityAssetName, eventArgs.EntityGroupName, eventArgs.ErrorMessage, eventArgs.UserData));
         }
 
         private void OnShowEntityUpdate(object sender, ShowEntityUpdateEventArgs eventArgs)
         {
-            m_EventComponent.Fire(this, eventArgs);
+            m_EventComponent.Fire(this, ShowEntityUpdateEventArgs.Create(eventArgs.EntityId, eventArgs.EntityAssetName, eventArgs.EntityGroupName, eventArgs.Progress, eventArgs.UserData));
         }
 
         private void OnShowEntityDependencyAsset(object sender, ShowEntityDependencyAssetEventArgs eventArgs)
         {
-            m_EventComponent.Fire(this, eventArgs);
+            m_EventComponent.Fire(this, ShowEntityDependencyAssetEventArgs.Create(eventArgs.EntityId, eventArgs.EntityAssetName, eventArgs.EntityGroupName, eventArgs.DependencyAssetName, eventArgs.LoadedCount, eventArgs.TotalCount, eventArgs.UserData));
         }
 
         private void OnHideEntityComplete(object sender, HideEntityCompleteEventArgs eventArgs)
         {
-            m_EventComponent.Fire(this, eventArgs);
+            m_EventComponent.Fire(this, HideEntityCompleteEventArgs.Create(eventArgs.EntityId, eventArgs.EntityAssetName, eventArgs.EntityGroup, eventArgs.UserData));
         }
     }
 }
