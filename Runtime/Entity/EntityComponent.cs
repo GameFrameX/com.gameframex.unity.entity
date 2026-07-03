@@ -59,15 +59,15 @@ namespace GameFrameX.Entity.Runtime
 
         [SerializeField] private Transform m_InstanceRoot = null;
 
-        [SerializeField] private string m_EntityHelperTypeName = "UnityGameFramework.Runtime.DefaultEntityHelper";
+        [SerializeField] private string m_EntityHelperTypeName = "GameFrameX.Entity.Runtime.DefaultEntityHelper";
 
         [SerializeField] private EntityHelperBase m_CustomEntityHelper = null;
 
-        [SerializeField] private string m_EntityGroupHelperTypeName = "UnityGameFramework.Runtime.DefaultEntityGroupHelper";
+        [SerializeField] private string m_EntityGroupHelperTypeName = "GameFrameX.Entity.Runtime.DefaultEntityGroupHelper";
 
         [SerializeField] private EntityGroupHelperBase m_CustomEntityGroupHelper = null;
 
-        [SerializeField] private EntityGroup[] m_EntityGroups = null;
+        [SerializeField] private EntityGroup[] m_EntityGroups = Array.Empty<EntityGroup>();
 
         [SerializeField] private int m_DefaultCapacity = 512;
 
@@ -115,6 +115,11 @@ namespace GameFrameX.Entity.Runtime
             ImplementationComponentType = Utility.Assembly.GetType(componentType);
             InterfaceComponentType = typeof(IEntityManager);
             base.Awake();
+            if (!IsRuntimeComponentReady)
+            {
+                return;
+            }
+
             m_EntityManager = GameFrameworkEntry.GetModule<IEntityManager>();
             if (m_EntityManager == null)
             {
@@ -140,6 +145,11 @@ namespace GameFrameX.Entity.Runtime
 
         private void Start()
         {
+            if (m_EntityManager == null)
+            {
+                return;
+            }
+
             BaseComponent baseComponent = GameEntry.GetComponent<BaseComponent>();
             if (baseComponent == null)
             {
@@ -182,6 +192,11 @@ namespace GameFrameX.Entity.Runtime
             for (int i = 0; i < m_EntityGroups.Length; i++)
             {
                 var entityGroup = m_EntityGroups[i];
+                if (entityGroup == null)
+                {
+                    continue;
+                }
+
                 if (!AddEntityGroup(entityGroup.Name, entityGroup.InstanceAutoReleaseInterval, entityGroup.InstanceCapacity, entityGroup.InstanceExpireTime, entityGroup.InstancePriority))
                 {
                     Log.Warning("Add entity group '{0}' failure.", entityGroup.Name);
