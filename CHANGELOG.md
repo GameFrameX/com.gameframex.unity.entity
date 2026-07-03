@@ -1,3 +1,10 @@
+## [2.4.5](https://github.com/gameframex/com.gameframex.unity.entity/compare/2.4.4...2.4.5) (2026-07-03)
+
+
+### Bug Fixes
+
+* **entity:** 修正 EntityComponent 默认命名空间与空引用防护 ([0bbb04f](https://github.com/gameframex/com.gameframex.unity.entity/commit/0bbb04f02913735c5d2f5bb14f57ce4d680e2fff))
+
 ## [2.4.4](https://github.com/gameframex/com.gameframex.unity.entity/compare/2.4.3...2.4.4) (2026-06-08)
 
 
