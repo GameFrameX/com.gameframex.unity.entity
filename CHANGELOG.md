@@ -1,3 +1,10 @@
+## [2.4.6](https://github.com/gameframex/com.gameframex.unity.entity/compare/2.4.5...2.4.6) (2026-07-29)
+
+
+### Bug Fixes
+
+* **dependencies:** 更新依赖项版本以支持新功能和修复已知问题 ([66d2c7b](https://github.com/gameframex/com.gameframex.unity.entity/commit/66d2c7b3fdc05ad2812eafacbf3404058f2eaf57))
+
 ## [2.4.5](https://github.com/gameframex/com.gameframex.unity.entity/compare/2.4.4...2.4.5) (2026-07-03)
 
 
