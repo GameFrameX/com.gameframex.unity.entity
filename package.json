@@ -3,7 +3,7 @@
     "displayName": "Game Frame X Entity",
     "category": "GameFrameX",
     "description": "GameFrameX Entity — Unity entity management package. Manages showing, hiding, grouping and parent-child attachment of game entities (attach by transform path or reference) with async spawning returning Task<IEntity>, entity groups with pooled instance capacity / expire time / auto-release interval, per-entity locking and priority, and event notifications across the show / hide lifecycle. Startup moves to code-level EntityOptions (GameFrameXOptions.Configure: capacity, expire time, helper factories, real-time event toggles). Docs: https://gameframex.doc.alianblank.com\n\nGameFrameX Entity — Unity 实体管理功能包。管理游戏实体的显示、隐藏、分组与父子挂接（按 Transform 路径或引用挂接），异步生成返回 Task<IEntity>；实体组具备池化实例容量/过期时间/自动释放间隔，支持实体级锁定与优先级，并提供显示/隐藏全生命周期事件通知。启动配置收敛为代码级 EntityOptions（GameFrameXOptions.Configure：容量、过期时间、Helper 工厂、实时事件开关）。文档：https://gameframex.doc.alianblank.com",
-    "version": "3.0.0",
+    "version": "3.0.1",
     "unity": "2019.4",
     "keywords": [
         "GameFrameX",
