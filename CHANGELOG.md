@@ -1,3 +1,19 @@
+# [3.0.0](https://github.com/gameframex/com.gameframex.unity.entity/compare/2.4.6...3.0.0) (2026-10-15)
+
+
+* feat(module)!: 实体模块薄入口化并新增 EntityOptions ([0407009](https://github.com/gameframex/com.gameframex.unity.entity/commit/04070094031f50851f34dde707f61daf30e003d0))
+
+
+### Bug Fixes
+
+* **deps:** 同步依赖版本至最新 ([f6619c0](https://github.com/gameframex/com.gameframex.unity.entity/commit/f6619c0ed6bfd2e6c500c41c3cfae33b0850a561))
+* **package:** 修正品牌命名 ([c64cfd6](https://github.com/gameframex/com.gameframex.unity.entity/commit/c64cfd68fcce8be78907198c7d8bd72940bcbdf2))
+
+
+### BREAKING CHANGES
+
+* EntityComponent 序列化字段移除，编辑期配置入口收敛到代码 EntityOptions。
+
 ## [Unreleased]
 
 ### ⚠ BREAKING CHANGES
