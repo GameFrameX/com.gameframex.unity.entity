@@ -50,6 +50,7 @@ namespace GameFrameX.Entity.Runtime
         /// </summary>
         /// <param name="entityGroupName">实体组名称。</param>
         /// <returns>是否存在实体组。</returns>
+        [UnityEngine.Scripting.Preserve]
         public bool HasEntityGroup(string entityGroupName)
         {
             if (string.IsNullOrEmpty(entityGroupName))
@@ -65,6 +66,7 @@ namespace GameFrameX.Entity.Runtime
         /// </summary>
         /// <param name="entityGroupName">实体组名称。</param>
         /// <returns>要获取的实体组。</returns>
+        [UnityEngine.Scripting.Preserve]
         public IEntityGroup GetEntityGroup(string entityGroupName)
         {
             if (string.IsNullOrEmpty(entityGroupName))
@@ -85,6 +87,7 @@ namespace GameFrameX.Entity.Runtime
         /// 获取所有实体组。
         /// </summary>
         /// <returns>所有实体组。</returns>
+        [UnityEngine.Scripting.Preserve]
         public IEntityGroup[] GetAllEntityGroups()
         {
             int index = 0;
@@ -101,6 +104,7 @@ namespace GameFrameX.Entity.Runtime
         /// 获取所有实体组。
         /// </summary>
         /// <param name="results">所有实体组。</param>
+        [UnityEngine.Scripting.Preserve]
         public void GetAllEntityGroups(List<IEntityGroup> results)
         {
             if (results == null)
@@ -120,6 +124,7 @@ namespace GameFrameX.Entity.Runtime
         /// </summary>
         /// <param name="entityId">实体编号。</param>
         /// <returns>是否存在实体。</returns>
+        [UnityEngine.Scripting.Preserve]
         public bool HasEntity(int entityId)
         {
             return m_EntityInfos.ContainsKey(entityId);
@@ -130,6 +135,7 @@ namespace GameFrameX.Entity.Runtime
         /// </summary>
         /// <param name="entityAssetName">实体资源名称。</param>
         /// <returns>是否存在实体。</returns>
+        [UnityEngine.Scripting.Preserve]
         public bool HasEntity(string entityAssetName)
         {
             if (string.IsNullOrEmpty(entityAssetName))
@@ -153,6 +159,7 @@ namespace GameFrameX.Entity.Runtime
         /// </summary>
         /// <param name="entityId">实体编号。</param>
         /// <returns>要获取的实体。</returns>
+        [UnityEngine.Scripting.Preserve]
         public IEntity GetEntity(int entityId)
         {
             EntityInfo entityInfo = GetEntityInfo(entityId);
@@ -169,6 +176,7 @@ namespace GameFrameX.Entity.Runtime
         /// </summary>
         /// <param name="entityAssetName">实体资源名称。</param>
         /// <returns>要获取的实体。</returns>
+        [UnityEngine.Scripting.Preserve]
         public IEntity GetEntity(string entityAssetName)
         {
             if (string.IsNullOrEmpty(entityAssetName))
@@ -192,6 +200,7 @@ namespace GameFrameX.Entity.Runtime
         /// </summary>
         /// <param name="entityAssetName">实体资源名称。</param>
         /// <returns>要获取的实体。</returns>
+        [UnityEngine.Scripting.Preserve]
         public IEntity[] GetEntities(string entityAssetName)
         {
             if (string.IsNullOrEmpty(entityAssetName))
@@ -216,6 +225,7 @@ namespace GameFrameX.Entity.Runtime
         /// </summary>
         /// <param name="entityAssetName">实体资源名称。</param>
         /// <param name="results">要获取的实体。</param>
+        [UnityEngine.Scripting.Preserve]
         public void GetEntities(string entityAssetName, List<IEntity> results)
         {
             if (string.IsNullOrEmpty(entityAssetName))
@@ -242,6 +252,7 @@ namespace GameFrameX.Entity.Runtime
         /// 获取所有已加载的实体。
         /// </summary>
         /// <returns>所有已加载的实体。</returns>
+        [UnityEngine.Scripting.Preserve]
         public IEntity[] GetAllLoadedEntities()
         {
             int index = 0;
@@ -258,6 +269,7 @@ namespace GameFrameX.Entity.Runtime
         /// 获取所有已加载的实体。
         /// </summary>
         /// <param name="results">所有已加载的实体。</param>
+        [UnityEngine.Scripting.Preserve]
         public void GetAllLoadedEntities(List<IEntity> results)
         {
             if (results == null)
@@ -276,6 +288,7 @@ namespace GameFrameX.Entity.Runtime
         /// 获取所有正在加载实体的编号。
         /// </summary>
         /// <returns>所有正在加载实体的编号。</returns>
+        [UnityEngine.Scripting.Preserve]
         public int[] GetAllLoadingEntityIds()
         {
             int index = 0;
@@ -292,6 +305,7 @@ namespace GameFrameX.Entity.Runtime
         /// 获取所有正在加载实体的编号。
         /// </summary>
         /// <param name="results">所有正在加载实体的编号。</param>
+        [UnityEngine.Scripting.Preserve]
         public void GetAllLoadingEntityIds(List<int> results)
         {
             if (results == null)
@@ -311,6 +325,7 @@ namespace GameFrameX.Entity.Runtime
         /// </summary>
         /// <param name="entity">实体。</param>
         /// <returns>实体是否合法。</returns>
+        [UnityEngine.Scripting.Preserve]
         public bool IsValidEntity(IEntity entity)
         {
             if (entity == null)
@@ -326,6 +341,7 @@ namespace GameFrameX.Entity.Runtime
         /// </summary>
         /// <param name="childEntityId">要获取父实体的子实体的实体编号。</param>
         /// <returns>子实体的父实体。</returns>
+        [UnityEngine.Scripting.Preserve]
         public IEntity GetParentEntity(int childEntityId)
         {
             EntityInfo childEntityInfo = GetEntityInfo(childEntityId);
@@ -342,6 +358,7 @@ namespace GameFrameX.Entity.Runtime
         /// </summary>
         /// <param name="childEntity">要获取父实体的子实体。</param>
         /// <returns>子实体的父实体。</returns>
+        [UnityEngine.Scripting.Preserve]
         public IEntity GetParentEntity(IEntity childEntity)
         {
             if (childEntity == null)
@@ -357,6 +374,7 @@ namespace GameFrameX.Entity.Runtime
         /// </summary>
         /// <param name="parentEntityId">要获取子实体数量的父实体的实体编号。</param>
         /// <returns>子实体数量。</returns>
+        [UnityEngine.Scripting.Preserve]
         public int GetChildEntityCount(int parentEntityId)
         {
             EntityInfo parentEntityInfo = GetEntityInfo(parentEntityId);
@@ -373,6 +391,7 @@ namespace GameFrameX.Entity.Runtime
         /// </summary>
         /// <param name="parentEntityId">要获取子实体的父实体的实体编号。</param>
         /// <returns>子实体。</returns>
+        [UnityEngine.Scripting.Preserve]
         public IEntity GetChildEntity(int parentEntityId)
         {
             EntityInfo parentEntityInfo = GetEntityInfo(parentEntityId);
@@ -389,6 +408,7 @@ namespace GameFrameX.Entity.Runtime
         /// </summary>
         /// <param name="parentEntity">要获取子实体的父实体。</param>
         /// <returns>子实体。</returns>
+        [UnityEngine.Scripting.Preserve]
         public IEntity GetChildEntity(IEntity parentEntity)
         {
             if (parentEntity == null)
@@ -404,6 +424,7 @@ namespace GameFrameX.Entity.Runtime
         /// </summary>
         /// <param name="parentEntityId">要获取所有子实体的父实体的实体编号。</param>
         /// <returns>所有子实体。</returns>
+        [UnityEngine.Scripting.Preserve]
         public IEntity[] GetChildEntities(int parentEntityId)
         {
             EntityInfo parentEntityInfo = GetEntityInfo(parentEntityId);
@@ -420,6 +441,7 @@ namespace GameFrameX.Entity.Runtime
         /// </summary>
         /// <param name="parentEntityId">要获取所有子实体的父实体的实体编号。</param>
         /// <param name="results">所有子实体。</param>
+        [UnityEngine.Scripting.Preserve]
         public void GetChildEntities(int parentEntityId, List<IEntity> results)
         {
             EntityInfo parentEntityInfo = GetEntityInfo(parentEntityId);
@@ -436,6 +458,7 @@ namespace GameFrameX.Entity.Runtime
         /// </summary>
         /// <param name="parentEntity">要获取所有子实体的父实体。</param>
         /// <returns>所有子实体。</returns>
+        [UnityEngine.Scripting.Preserve]
         public IEntity[] GetChildEntities(IEntity parentEntity)
         {
             if (parentEntity == null)
@@ -451,6 +474,7 @@ namespace GameFrameX.Entity.Runtime
         /// </summary>
         /// <param name="parentEntity">要获取所有子实体的父实体。</param>
         /// <param name="results">所有子实体。</param>
+        [UnityEngine.Scripting.Preserve]
         public void GetChildEntities(IEntity parentEntity, List<IEntity> results)
         {
             if (parentEntity == null)
@@ -465,6 +489,7 @@ namespace GameFrameX.Entity.Runtime
         /// 释放所有实体组。
         /// </summary>
         /// <param name="expireTime">过期时间。默认值为 1 秒。</param>
+        [UnityEngine.Scripting.Preserve]
         public void ReleaseAllEntityGroups(float expireTime = 1f)
         {
             var groupList = new List<IEntityGroup>(32);
@@ -495,6 +520,7 @@ namespace GameFrameX.Entity.Runtime
         /// </summary>
         /// <param name="entityGroupName">实体组名称。</param>
         /// <param name="expireTime">过期时间。默认值为 1 秒。</param>
+        [UnityEngine.Scripting.Preserve]
         public void ReleaseEntityGroup(string entityGroupName, float expireTime = 1f)
         {
             var entityGroup = GetEntityGroup(entityGroupName);

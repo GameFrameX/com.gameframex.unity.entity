@@ -47,6 +47,7 @@ namespace GameFrameX.Entity.Runtime
         /// <summary>
         /// 初始化隐藏实体完成事件的新实例。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public HideEntityCompleteEventArgs()
         {
             EntityId = 0;
@@ -66,21 +67,25 @@ namespace GameFrameX.Entity.Runtime
         /// <summary>
         /// 获取实体编号。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public int EntityId { get; private set; }
 
         /// <summary>
         /// 获取实体资源名称。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public string EntityAssetName { get; private set; }
 
         /// <summary>
         /// 获取实体所属的实体组。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public IEntityGroup EntityGroup { get; private set; }
 
         /// <summary>
         /// 获取用户自定义数据。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public object UserData { get; private set; }
 
         /// <summary>
@@ -91,6 +96,7 @@ namespace GameFrameX.Entity.Runtime
         /// <param name="entityGroup">实体所属的实体组。</param>
         /// <param name="userData">用户自定义数据。</param>
         /// <returns>创建的隐藏实体完成事件。</returns>
+        [UnityEngine.Scripting.Preserve]
         public static HideEntityCompleteEventArgs Create(int entityId, string entityAssetName, IEntityGroup entityGroup, object userData)
         {
             HideEntityCompleteEventArgs hideEntityCompleteEventArgs = ReferencePool.Acquire<HideEntityCompleteEventArgs>();

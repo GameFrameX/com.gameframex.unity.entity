@@ -48,6 +48,7 @@ namespace GameFrameX.Entity.Runtime
         /// <summary>
         /// 初始化显示实体时加载依赖资源事件的新实例。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public ShowEntityDependencyAssetEventArgs()
         {
             EntityId = 0;
@@ -71,41 +72,49 @@ namespace GameFrameX.Entity.Runtime
         /// <summary>
         /// 获取实体编号。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public int EntityId { get; private set; }
 
         /// <summary>
         /// 获取实体逻辑类型。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public Type EntityLogicType { get; private set; }
 
         /// <summary>
         /// 获取实体资源名称。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public string EntityAssetName { get; private set; }
 
         /// <summary>
         /// 获取实体组名称。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public string EntityGroupName { get; private set; }
 
         /// <summary>
         /// 获取被加载的依赖资源名称。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public string DependencyAssetName { get; private set; }
 
         /// <summary>
         /// 获取当前已加载依赖资源数量。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public int LoadedCount { get; private set; }
 
         /// <summary>
         /// 获取总共加载依赖资源数量。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public int TotalCount { get; private set; }
 
         /// <summary>
         /// 获取用户自定义数据。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public object UserData { get; private set; }
 
         /// <summary>
@@ -119,6 +128,7 @@ namespace GameFrameX.Entity.Runtime
         /// <param name="totalCount">总共加载依赖资源数量。</param>
         /// <param name="userData">用户自定义数据。</param>
         /// <returns>创建的显示实体时加载依赖资源事件。</returns>
+        [UnityEngine.Scripting.Preserve]
         public static ShowEntityDependencyAssetEventArgs Create(int entityId, string entityAssetName, string entityGroupName, string dependencyAssetName, int loadedCount, int totalCount, object userData)
         {
             ShowEntityDependencyAssetEventArgs showEntityDependencyAssetEventArgs = ReferencePool.Acquire<ShowEntityDependencyAssetEventArgs>();

@@ -48,6 +48,7 @@ namespace GameFrameX.Entity.Runtime
         /// <summary>
         /// 初始化显示实体失败事件的新实例。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public ShowEntityFailureEventArgs()
         {
             EntityId = 0;
@@ -72,6 +73,7 @@ namespace GameFrameX.Entity.Runtime
         /// <summary>
         /// 获取实体编号。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public int EntityId
         {
             get;
@@ -81,6 +83,7 @@ namespace GameFrameX.Entity.Runtime
         /// <summary>
         /// 获取实体逻辑类型。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public Type EntityLogicType
         {
             get;
@@ -90,6 +93,7 @@ namespace GameFrameX.Entity.Runtime
         /// <summary>
         /// 获取实体资源名称。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public string EntityAssetName
         {
             get;
@@ -99,6 +103,7 @@ namespace GameFrameX.Entity.Runtime
         /// <summary>
         /// 获取实体组名称。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public string EntityGroupName
         {
             get;
@@ -108,6 +113,7 @@ namespace GameFrameX.Entity.Runtime
         /// <summary>
         /// 获取错误信息。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public string ErrorMessage
         {
             get;
@@ -117,6 +123,7 @@ namespace GameFrameX.Entity.Runtime
         /// <summary>
         /// 获取用户自定义数据。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public object UserData
         {
             get;
@@ -132,6 +139,7 @@ namespace GameFrameX.Entity.Runtime
         /// <param name="errorMessage">错误信息。</param>
         /// <param name="userData">用户自定义数据。</param>
         /// <returns>创建的显示实体失败事件。</returns>
+        [UnityEngine.Scripting.Preserve]
         public static ShowEntityFailureEventArgs Create(int entityId, string entityAssetName, string entityGroupName, string errorMessage, object userData)
         {
             ShowEntityFailureEventArgs showEntityFailureEventArgs = ReferencePool.Acquire<ShowEntityFailureEventArgs>();

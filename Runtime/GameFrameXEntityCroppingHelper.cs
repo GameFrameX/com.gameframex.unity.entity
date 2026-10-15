@@ -1,12 +1,11 @@
 using UnityEngine;
-using UnityEngine.Scripting;
 
 namespace GameFrameX.Entity.Runtime
 {
-    [Preserve]
+    [UnityEngine.Scripting.Preserve]
     public class GameFrameXEntityCroppingHelper : MonoBehaviour
     {
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         private void Start()
         {
             _ = typeof(EntityManager);

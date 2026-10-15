@@ -48,6 +48,7 @@ namespace GameFrameX.Entity.Runtime
         /// <summary>
         /// 初始化显示实体成功事件的新实例。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public ShowEntitySuccessEventArgs()
         {
             EntityLogicType = null;
@@ -67,21 +68,25 @@ namespace GameFrameX.Entity.Runtime
         /// <summary>
         /// 获取实体逻辑类型。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public Type EntityLogicType { get; private set; }
 
         /// <summary>
         /// 获取显示成功的实体。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public IEntity Entity { get; private set; }
 
         /// <summary>
         /// 获取加载持续时间。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public float Duration { get; private set; }
 
         /// <summary>
         /// 获取用户自定义数据。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public object UserData { get; private set; }
 
         /// <summary>
@@ -91,6 +96,7 @@ namespace GameFrameX.Entity.Runtime
         /// <param name="duration">加载持续时间。</param>
         /// <param name="userData">用户自定义数据。</param>
         /// <returns>创建的显示实体成功事件。</returns>
+        [UnityEngine.Scripting.Preserve]
         public static ShowEntitySuccessEventArgs Create(IEntity entity, float duration, object userData)
         {
             ShowEntitySuccessEventArgs showEntitySuccessEventArgs = ReferencePool.Acquire<ShowEntitySuccessEventArgs>();

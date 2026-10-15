@@ -50,6 +50,7 @@ namespace GameFrameX.Entity.Runtime
         /// <summary>
         /// 获取实体编号。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public int Id
         {
             get { return m_Id; }
@@ -58,6 +59,7 @@ namespace GameFrameX.Entity.Runtime
         /// <summary>
         /// 获取实体资源名称。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public string EntityAssetName
         {
             get { return m_EntityAssetName; }
@@ -66,6 +68,7 @@ namespace GameFrameX.Entity.Runtime
         /// <summary>
         /// 获取实体实例。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public object Handle
         {
             get { return gameObject; }
@@ -74,6 +77,7 @@ namespace GameFrameX.Entity.Runtime
         /// <summary>
         /// 获取实体所属的实体组。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public IEntityGroup EntityGroup
         {
             get { return m_EntityGroup; }
@@ -82,6 +86,7 @@ namespace GameFrameX.Entity.Runtime
         /// <summary>
         /// 获取实体逻辑。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public EntityLogic Logic
         {
             get { return m_EntityLogic; }
@@ -95,6 +100,7 @@ namespace GameFrameX.Entity.Runtime
         /// <param name="entityGroup">实体所属的实体组。</param>
         /// <param name="isNewInstance">是否是新实例。</param>
         /// <param name="userData">用户自定义数据。</param>
+        [UnityEngine.Scripting.Preserve]
         public void OnInit(int entityId, string entityAssetName, IEntityGroup entityGroup, bool isNewInstance, object userData)
         {
             m_Id = entityId;
@@ -159,6 +165,7 @@ namespace GameFrameX.Entity.Runtime
         /// <summary>
         /// 实体回收。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public void OnRecycle()
         {
             if (m_EntityLogic == null)
@@ -185,6 +192,7 @@ namespace GameFrameX.Entity.Runtime
         /// 实体显示。
         /// </summary>
         /// <param name="userData">用户自定义数据。</param>
+        [UnityEngine.Scripting.Preserve]
         public void OnShow(object userData)
         {
             ShowEntityInfo showEntityInfo = userData as ShowEntityInfo;
@@ -209,6 +217,7 @@ namespace GameFrameX.Entity.Runtime
         /// </summary>
         /// <param name="isShutdown">是否是关闭实体管理器时触发。</param>
         /// <param name="userData">用户自定义数据。</param>
+        [UnityEngine.Scripting.Preserve]
         public void OnHide(bool isShutdown, object userData)
         {
             try
@@ -226,6 +235,7 @@ namespace GameFrameX.Entity.Runtime
         /// </summary>
         /// <param name="childEntity">附加的子实体。</param>
         /// <param name="userData">用户自定义数据。</param>
+        [UnityEngine.Scripting.Preserve]
         public void OnAttached(IEntity childEntity, object userData)
         {
             AttachEntityInfo attachEntityInfo = userData as AttachEntityInfo;
@@ -250,6 +260,7 @@ namespace GameFrameX.Entity.Runtime
         /// </summary>
         /// <param name="childEntity">解除的子实体。</param>
         /// <param name="userData">用户自定义数据。</param>
+        [UnityEngine.Scripting.Preserve]
         public void OnDetached(IEntity childEntity, object userData)
         {
             try
@@ -267,6 +278,7 @@ namespace GameFrameX.Entity.Runtime
         /// </summary>
         /// <param name="parentEntity">被附加的父实体。</param>
         /// <param name="userData">用户自定义数据。</param>
+        [UnityEngine.Scripting.Preserve]
         public void OnAttachTo(IEntity parentEntity, object userData)
         {
             AttachEntityInfo attachEntityInfo = userData as AttachEntityInfo;
@@ -293,6 +305,7 @@ namespace GameFrameX.Entity.Runtime
         /// </summary>
         /// <param name="parentEntity">被解除的父实体。</param>
         /// <param name="userData">用户自定义数据。</param>
+        [UnityEngine.Scripting.Preserve]
         public void OnDetachFrom(IEntity parentEntity, object userData)
         {
             try
@@ -310,6 +323,7 @@ namespace GameFrameX.Entity.Runtime
         /// </summary>
         /// <param name="elapseSeconds">逻辑流逝时间，以秒为单位。</param>
         /// <param name="realElapseSeconds">真实流逝时间，以秒为单位。</param>
+        [UnityEngine.Scripting.Preserve]
         public void OnUpdate(float elapseSeconds, float realElapseSeconds)
         {
             try

@@ -1,7 +1,8 @@
 {
     "name": "GameFrameX.Entity.Tests",
     "references": [
-        "GameFrameX.Entity.Runtime"
+        "GameFrameX.Entity.Runtime",
+        "GameFrameX.Runtime"
     ],
     "rootNamespace": "GameFrameX.Entity.Tests",
     "includePlatforms": [

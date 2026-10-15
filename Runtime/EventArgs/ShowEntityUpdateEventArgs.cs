@@ -48,6 +48,7 @@ namespace GameFrameX.Entity.Runtime
         /// <summary>
         /// 初始化显示实体更新事件的新实例。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public ShowEntityUpdateEventArgs()
         {
             EntityId = 0;
@@ -69,31 +70,37 @@ namespace GameFrameX.Entity.Runtime
         /// <summary>
         /// 获取实体编号。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public int EntityId { get; private set; }
 
         /// <summary>
         /// 获取实体逻辑类型。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public Type EntityLogicType { get; private set; }
 
         /// <summary>
         /// 获取实体资源名称。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public string EntityAssetName { get; private set; }
 
         /// <summary>
         /// 获取实体组名称。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public string EntityGroupName { get; private set; }
 
         /// <summary>
         /// 获取显示实体进度。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public float Progress { get; private set; }
 
         /// <summary>
         /// 获取用户自定义数据。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public object UserData { get; private set; }
 
         /// <summary>
@@ -105,6 +112,7 @@ namespace GameFrameX.Entity.Runtime
         /// <param name="progress">显示实体进度。</param>
         /// <param name="userData">用户自定义数据。</param>
         /// <returns>创建的显示实体更新事件。</returns>
+        [UnityEngine.Scripting.Preserve]
         public static ShowEntityUpdateEventArgs Create(int entityId, string entityAssetName, string entityGroupName, float progress, object userData)
         {
             ShowEntityUpdateEventArgs showEntityUpdateEventArgs = ReferencePool.Acquire<ShowEntityUpdateEventArgs>();

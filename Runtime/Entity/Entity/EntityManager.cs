@@ -1,4 +1,4 @@
-﻿// ==========================================================================================
+// ==========================================================================================
 //  GameFrameX 组织及其衍生项目的版权、商标、专利及其他相关权利
 //  GameFrameX organization and its derivative projects' copyrights, trademarks, patents, and related rights
 //  均受中华人民共和国及相关国际法律法规保护。
@@ -44,7 +44,7 @@ namespace GameFrameX.Entity.Runtime
     /// 实体管理器。
     /// </summary>
     [UnityEngine.Scripting.Preserve]
-    public sealed partial class EntityManager : GameFrameworkModule, IEntityManager
+    public sealed partial class EntityManager : IGameFrameworkModule, IEntityManager, IUpdatableModule, IShutdownableModule
     {
         private readonly Dictionary<int, EntityInfo> m_EntityInfos;
         private readonly Dictionary<string, EntityGroup> m_EntityGroups;
@@ -66,6 +66,7 @@ namespace GameFrameX.Entity.Runtime
         /// <summary>
         /// 初始化实体管理器的新实例。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public EntityManager()
         {
             m_EntityInfos = new Dictionary<int, EntityInfo>();
@@ -90,6 +91,7 @@ namespace GameFrameX.Entity.Runtime
         /// <summary>
         /// 获取实体数量。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public int EntityCount
         {
             get { return m_EntityInfos.Count; }
@@ -98,6 +100,7 @@ namespace GameFrameX.Entity.Runtime
         /// <summary>
         /// 获取实体组数量。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public int EntityGroupCount
         {
             get { return m_EntityGroups.Count; }
@@ -153,7 +156,8 @@ namespace GameFrameX.Entity.Runtime
         /// </summary>
         /// <param name="elapseSeconds">逻辑流逝时间，以秒为单位。</param>
         /// <param name="realElapseSeconds">真实流逝时间，以秒为单位。</param>
-        protected override void Update(float elapseSeconds, float realElapseSeconds)
+        [UnityEngine.Scripting.Preserve]
+        public void Update(float elapseSeconds, float realElapseSeconds)
         {
             while (m_RecycleQueue.Count > 0)
             {
@@ -181,7 +185,8 @@ namespace GameFrameX.Entity.Runtime
         /// <summary>
         /// 关闭并清理实体管理器。
         /// </summary>
-        protected override void Shutdown()
+        [UnityEngine.Scripting.Preserve]
+        public void Shutdown()
         {
             m_IsShutdown = true;
             HideAllLoadedEntities();
@@ -202,6 +207,7 @@ namespace GameFrameX.Entity.Runtime
         /// 设置对象池管理器。
         /// </summary>
         /// <param name="objectPoolManager">对象池管理器。</param>
+        [UnityEngine.Scripting.Preserve]
         public void SetObjectPoolManager(IObjectPoolManager objectPoolManager)
         {
             if (objectPoolManager == null)
@@ -216,6 +222,7 @@ namespace GameFrameX.Entity.Runtime
         /// 设置资源管理器。
         /// </summary>
         /// <param name="assetManager">资源管理器。</param>
+        [UnityEngine.Scripting.Preserve]
         public void SetResourceManager(IAssetManager assetManager)
         {
             if (assetManager == null)
@@ -230,6 +237,7 @@ namespace GameFrameX.Entity.Runtime
         /// 设置实体辅助器。
         /// </summary>
         /// <param name="entityHelper">实体辅助器。</param>
+        [UnityEngine.Scripting.Preserve]
         public void SetEntityHelper(IEntityHelper entityHelper)
         {
             if (entityHelper == null)
@@ -250,6 +258,7 @@ namespace GameFrameX.Entity.Runtime
         /// <param name="instancePriority">实体实例对象池的优先级。</param>
         /// <param name="entityGroupHelper">实体组辅助器。</param>
         /// <returns>是否增加实体组成功。</returns>
+        [UnityEngine.Scripting.Preserve]
         public bool AddEntityGroup(string entityGroupName, float instanceAutoReleaseInterval, int instanceCapacity, float instanceExpireTime, int instancePriority, IEntityGroupHelper entityGroupHelper)
         {
             if (string.IsNullOrEmpty(entityGroupName))
@@ -282,6 +291,7 @@ namespace GameFrameX.Entity.Runtime
         /// </summary>
         /// <param name="entityId">实体编号。</param>
         /// <returns>是否正在加载实体。</returns>
+        [UnityEngine.Scripting.Preserve]
         public bool IsLoadingEntity(int entityId)
         {
             return m_EntitiesBeingLoaded.ContainsKey(entityId);
@@ -293,6 +303,7 @@ namespace GameFrameX.Entity.Runtime
         /// <param name="entityId">实体编号。</param>
         /// <param name="entityAssetName">实体资源名称。</param>
         /// <param name="entityGroupName">实体组名称。</param>
+        [UnityEngine.Scripting.Preserve]
         public UniTask<IEntity> ShowEntityAsync(int entityId, string entityAssetName, string entityGroupName)
         {
             return ShowEntityAsync(entityId, entityAssetName, entityGroupName, 0, null);
@@ -305,6 +316,7 @@ namespace GameFrameX.Entity.Runtime
         /// <param name="entityAssetName">实体资源名称。</param>
         /// <param name="entityGroupName">实体组名称。</param>
         /// <param name="priority">加载实体资源的优先级。</param>
+        [UnityEngine.Scripting.Preserve]
         public UniTask<IEntity> ShowEntityAsync(int entityId, string entityAssetName, string entityGroupName, int priority)
         {
             return ShowEntityAsync(entityId, entityAssetName, entityGroupName, priority, null);
@@ -317,6 +329,7 @@ namespace GameFrameX.Entity.Runtime
         /// <param name="entityAssetName">实体资源名称。</param>
         /// <param name="entityGroupName">实体组名称。</param>
         /// <param name="userData">用户自定义数据。</param>
+        [UnityEngine.Scripting.Preserve]
         public UniTask<IEntity> ShowEntityAsync(int entityId, string entityAssetName, string entityGroupName, object userData)
         {
             return ShowEntityAsync(entityId, entityAssetName, entityGroupName, 0, userData);
@@ -330,6 +343,7 @@ namespace GameFrameX.Entity.Runtime
         /// <param name="entityGroupName">实体组名称。</param>
         /// <param name="priority">加载实体资源的优先级。</param>
         /// <param name="userData">用户自定义数据。</param>
+        [UnityEngine.Scripting.Preserve]
         public async UniTask<IEntity> ShowEntityAsync(int entityId, string entityAssetName, string entityGroupName, int priority, object userData)
         {
             if (m_AssetManager == null)
@@ -401,6 +415,7 @@ namespace GameFrameX.Entity.Runtime
         /// </summary>
         /// <param name="childEntityId">要附加的子实体的实体编号。</param>
         /// <param name="parentEntityId">被附加的父实体的实体编号。</param>
+        [UnityEngine.Scripting.Preserve]
         public void AttachEntity(int childEntityId, int parentEntityId)
         {
             AttachEntity(childEntityId, parentEntityId, null);
@@ -412,6 +427,7 @@ namespace GameFrameX.Entity.Runtime
         /// <param name="childEntityId">要附加的子实体的实体编号。</param>
         /// <param name="parentEntityId">被附加的父实体的实体编号。</param>
         /// <param name="userData">用户自定义数据。</param>
+        [UnityEngine.Scripting.Preserve]
         public void AttachEntity(int childEntityId, int parentEntityId, object userData)
         {
             if (childEntityId == parentEntityId)
@@ -455,6 +471,7 @@ namespace GameFrameX.Entity.Runtime
         /// </summary>
         /// <param name="childEntityId">要附加的子实体的实体编号。</param>
         /// <param name="parentEntity">被附加的父实体。</param>
+        [UnityEngine.Scripting.Preserve]
         public void AttachEntity(int childEntityId, IEntity parentEntity)
         {
             AttachEntity(childEntityId, parentEntity, null);
@@ -466,6 +483,7 @@ namespace GameFrameX.Entity.Runtime
         /// <param name="childEntityId">要附加的子实体的实体编号。</param>
         /// <param name="parentEntity">被附加的父实体。</param>
         /// <param name="userData">用户自定义数据。</param>
+        [UnityEngine.Scripting.Preserve]
         public void AttachEntity(int childEntityId, IEntity parentEntity, object userData)
         {
             if (parentEntity == null)
@@ -481,6 +499,7 @@ namespace GameFrameX.Entity.Runtime
         /// </summary>
         /// <param name="childEntity">要附加的子实体。</param>
         /// <param name="parentEntityId">被附加的父实体的实体编号。</param>
+        [UnityEngine.Scripting.Preserve]
         public void AttachEntity(IEntity childEntity, int parentEntityId)
         {
             AttachEntity(childEntity, parentEntityId, null);
@@ -492,6 +511,7 @@ namespace GameFrameX.Entity.Runtime
         /// <param name="childEntity">要附加的子实体。</param>
         /// <param name="parentEntityId">被附加的父实体的实体编号。</param>
         /// <param name="userData">用户自定义数据。</param>
+        [UnityEngine.Scripting.Preserve]
         public void AttachEntity(IEntity childEntity, int parentEntityId, object userData)
         {
             if (childEntity == null)
@@ -507,6 +527,7 @@ namespace GameFrameX.Entity.Runtime
         /// </summary>
         /// <param name="childEntity">要附加的子实体。</param>
         /// <param name="parentEntity">被附加的父实体。</param>
+        [UnityEngine.Scripting.Preserve]
         public void AttachEntity(IEntity childEntity, IEntity parentEntity)
         {
             AttachEntity(childEntity, parentEntity, null);
@@ -518,6 +539,7 @@ namespace GameFrameX.Entity.Runtime
         /// <param name="childEntity">要附加的子实体。</param>
         /// <param name="parentEntity">被附加的父实体。</param>
         /// <param name="userData">用户自定义数据。</param>
+        [UnityEngine.Scripting.Preserve]
         public void AttachEntity(IEntity childEntity, IEntity parentEntity, object userData)
         {
             if (childEntity == null)

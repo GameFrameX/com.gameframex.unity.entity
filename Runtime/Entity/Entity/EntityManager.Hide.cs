@@ -43,6 +43,7 @@ namespace GameFrameX.Entity.Runtime
         /// 隐藏实体。
         /// </summary>
         /// <param name="entityId">实体编号。</param>
+        [UnityEngine.Scripting.Preserve]
         public void HideEntity(int entityId)
         {
             HideEntity(entityId, null);
@@ -53,6 +54,7 @@ namespace GameFrameX.Entity.Runtime
         /// </summary>
         /// <param name="entityId">实体编号。</param>
         /// <param name="userData">用户自定义数据。</param>
+        [UnityEngine.Scripting.Preserve]
         public void HideEntity(int entityId, object userData)
         {
             if (IsLoadingEntity(entityId))
@@ -75,6 +77,7 @@ namespace GameFrameX.Entity.Runtime
         /// 隐藏实体。
         /// </summary>
         /// <param name="entity">实体。</param>
+        [UnityEngine.Scripting.Preserve]
         public void HideEntity(IEntity entity)
         {
             HideEntity(entity, null);
@@ -85,6 +88,7 @@ namespace GameFrameX.Entity.Runtime
         /// </summary>
         /// <param name="entity">实体。</param>
         /// <param name="userData">用户自定义数据。</param>
+        [UnityEngine.Scripting.Preserve]
         public void HideEntity(IEntity entity, object userData)
         {
             if (entity == null)
@@ -98,6 +102,7 @@ namespace GameFrameX.Entity.Runtime
         /// <summary>
         /// 隐藏所有已加载的实体。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public void HideAllLoadedEntities()
         {
             HideAllLoadedEntities(null);
@@ -107,6 +112,7 @@ namespace GameFrameX.Entity.Runtime
         /// 隐藏所有已加载的实体。
         /// </summary>
         /// <param name="userData">用户自定义数据。</param>
+        [UnityEngine.Scripting.Preserve]
         public void HideAllLoadedEntities(object userData)
         {
             int[] entityIds = new int[m_EntityInfos.Count];
@@ -124,6 +130,7 @@ namespace GameFrameX.Entity.Runtime
         /// <summary>
         /// 隐藏所有正在加载的实体。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public void HideAllLoadingEntities()
         {
             foreach (KeyValuePair<int, int> entityBeingLoaded in m_EntitiesBeingLoaded)
@@ -138,6 +145,7 @@ namespace GameFrameX.Entity.Runtime
         /// 解除子实体。
         /// </summary>
         /// <param name="childEntityId">要解除的子实体的实体编号。</param>
+        [UnityEngine.Scripting.Preserve]
         public void DetachEntity(int childEntityId)
         {
             DetachEntity(childEntityId, null);
@@ -148,6 +156,7 @@ namespace GameFrameX.Entity.Runtime
         /// </summary>
         /// <param name="childEntityId">要解除的子实体的实体编号。</param>
         /// <param name="userData">用户自定义数据。</param>
+        [UnityEngine.Scripting.Preserve]
         public void DetachEntity(int childEntityId, object userData)
         {
             EntityInfo childEntityInfo = GetEntityInfo(childEntityId);
@@ -179,6 +188,7 @@ namespace GameFrameX.Entity.Runtime
         /// 解除子实体。
         /// </summary>
         /// <param name="childEntity">要解除的子实体。</param>
+        [UnityEngine.Scripting.Preserve]
         public void DetachEntity(IEntity childEntity)
         {
             DetachEntity(childEntity, null);
@@ -189,6 +199,7 @@ namespace GameFrameX.Entity.Runtime
         /// </summary>
         /// <param name="childEntity">要解除的子实体。</param>
         /// <param name="userData">用户自定义数据。</param>
+        [UnityEngine.Scripting.Preserve]
         public void DetachEntity(IEntity childEntity, object userData)
         {
             if (childEntity == null)
@@ -203,6 +214,7 @@ namespace GameFrameX.Entity.Runtime
         /// 解除所有子实体。
         /// </summary>
         /// <param name="parentEntityId">被解除的父实体的实体编号。</param>
+        [UnityEngine.Scripting.Preserve]
         public void DetachChildEntities(int parentEntityId)
         {
             DetachChildEntities(parentEntityId, null);
@@ -213,6 +225,7 @@ namespace GameFrameX.Entity.Runtime
         /// </summary>
         /// <param name="parentEntityId">被解除的父实体的实体编号。</param>
         /// <param name="userData">用户自定义数据。</param>
+        [UnityEngine.Scripting.Preserve]
         public void DetachChildEntities(int parentEntityId, object userData)
         {
             EntityInfo parentEntityInfo = GetEntityInfo(parentEntityId);
@@ -232,6 +245,7 @@ namespace GameFrameX.Entity.Runtime
         /// 解除所有子实体。
         /// </summary>
         /// <param name="parentEntity">被解除的父实体。</param>
+        [UnityEngine.Scripting.Preserve]
         public void DetachChildEntities(IEntity parentEntity)
         {
             DetachChildEntities(parentEntity, null);
@@ -242,6 +256,7 @@ namespace GameFrameX.Entity.Runtime
         /// </summary>
         /// <param name="parentEntity">被解除的父实体。</param>
         /// <param name="userData">用户自定义数据。</param>
+        [UnityEngine.Scripting.Preserve]
         public void DetachChildEntities(IEntity parentEntity, object userData)
         {
             if (parentEntity == null)

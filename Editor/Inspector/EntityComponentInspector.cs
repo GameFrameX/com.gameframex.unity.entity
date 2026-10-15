@@ -39,15 +39,11 @@ namespace GameFrameX.Entity.Editor
     [CustomEditor(typeof(EntityComponent))]
     internal sealed class EntityComponentInspector : ComponentTypeComponentInspector
     {
-        private SerializedProperty m_EnableShowEntityUpdateEvent = null;
-        private SerializedProperty m_EnableShowEntityDependencyAssetEvent = null;
         private SerializedProperty m_InstanceRoot = null;
         private SerializedProperty m_EntityGroups = null;
-        private SerializedProperty m_DefaultCapacity = null;
-        private SerializedProperty m_DefaultExpireTime = null;
 
-        private HelperInfo<EntityHelperBase> m_EntityHelperInfo = new HelperInfo<EntityHelperBase>("Entity");
-        private HelperInfo<EntityGroupHelperBase> m_EntityGroupHelperInfo = new HelperInfo<EntityGroupHelperBase>("EntityGroup");
+        private SerializedProperty m_CustomEntityHelper = null;
+        private SerializedProperty m_CustomEntityGroupHelper = null;
 
         public override void OnInspectorGUI()
         {
@@ -57,15 +53,15 @@ namespace GameFrameX.Entity.Editor
 
             EntityComponent t = (EntityComponent)target;
 
+            // C9 活视图：编辑态提示 EntityOptions 入口；Play 态两个事件开关可实时修改（写回私有字段）；
+            // DefaultCapacity/DefaultExpireTime/两工厂为启动期型只读（经公开属性读取现状）。
+            GameFrameXOptionsLiveViewUtility.DrawLiveView(t, typeof(EntityOptions));
+
             EditorGUI.BeginDisabledGroup(EditorApplication.isPlayingOrWillChangePlaymode);
             {
-                EditorGUILayout.PropertyField(m_EnableShowEntityUpdateEvent);
-                EditorGUILayout.PropertyField(m_EnableShowEntityDependencyAssetEvent);
                 EditorGUILayout.PropertyField(m_InstanceRoot);
-                m_EntityHelperInfo.Draw();
-                m_EntityGroupHelperInfo.Draw();
-                EditorGUILayout.IntSlider(m_DefaultCapacity, 1, 4096);
-                EditorGUILayout.Slider(m_DefaultExpireTime, 0f, 3600f);
+                EditorGUILayout.PropertyField(m_CustomEntityHelper);
+                EditorGUILayout.PropertyField(m_CustomEntityGroupHelper);
                 EditorGUILayout.PropertyField(m_EntityGroups, true);
             }
             EditorGUI.EndDisabledGroup();
@@ -88,18 +84,11 @@ namespace GameFrameX.Entity.Editor
 
         protected override void Enable()
         {
-            m_EnableShowEntityUpdateEvent = serializedObject.FindProperty("m_EnableShowEntityUpdateEvent");
-            m_EnableShowEntityDependencyAssetEvent = serializedObject.FindProperty("m_EnableShowEntityDependencyAssetEvent");
             m_InstanceRoot = serializedObject.FindProperty("m_InstanceRoot");
             m_EntityGroups = serializedObject.FindProperty("m_EntityGroups");
-            m_DefaultCapacity = serializedObject.FindProperty("m_DefaultCapacity");
-            m_DefaultExpireTime = serializedObject.FindProperty("m_DefaultExpireTime");
 
-            m_EntityHelperInfo.Init(serializedObject);
-            m_EntityGroupHelperInfo.Init(serializedObject);
-
-            m_EntityHelperInfo.Refresh();
-            m_EntityGroupHelperInfo.Refresh();
+            m_CustomEntityHelper = serializedObject.FindProperty("m_CustomEntityHelper");
+            m_CustomEntityGroupHelper = serializedObject.FindProperty("m_CustomEntityGroupHelper");
             serializedObject.ApplyModifiedProperties();
         }
 

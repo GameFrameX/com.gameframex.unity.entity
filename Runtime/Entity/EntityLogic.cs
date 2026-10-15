@@ -49,6 +49,7 @@ namespace GameFrameX.Entity.Runtime
         /// <summary>
         /// 获取实体。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public Entity Entity
         {
             get { return m_Entity; }
@@ -57,6 +58,7 @@ namespace GameFrameX.Entity.Runtime
         /// <summary>
         /// 获取或设置实体名称。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public string Name
         {
             get { return gameObject.name; }
@@ -66,6 +68,7 @@ namespace GameFrameX.Entity.Runtime
         /// <summary>
         /// 获取实体是否可用。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public bool Available
         {
             get { return m_Available; }
@@ -74,6 +77,7 @@ namespace GameFrameX.Entity.Runtime
         /// <summary>
         /// 获取或设置实体是否可见。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public bool Visible
         {
             get { return m_Available && m_Visible; }
@@ -98,6 +102,7 @@ namespace GameFrameX.Entity.Runtime
         /// <summary>
         /// 获取已缓存的 Transform。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public Transform CachedTransform
         {
             get { return m_CachedTransform; }
@@ -143,7 +148,7 @@ namespace GameFrameX.Entity.Runtime
         /// <param name="userData">用户自定义数据。</param>
         protected internal virtual void OnHide(bool isShutdown, object userData)
         {
-            gameObject.SetLayerRecursively(m_OriginalLayer);
+            gameObject.SetLayer(m_OriginalLayer);
             Visible = false;
             m_Available = false;
         }
