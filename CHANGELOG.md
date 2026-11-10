@@ -1,3 +1,10 @@
+## [3.0.3](https://github.com/gameframex/com.gameframex.unity.entity/compare/3.0.2...3.0.3) (2026-11-10)
+
+
+### Bug Fixes
+
+* **entity:** 添加完整 link.xml 防代码裁剪保护 ([65bb9f9](https://github.com/gameframex/com.gameframex.unity.entity/commit/65bb9f979ae5696963a49e4f0c650bb532c199ac))
+
 ## [3.0.2](https://github.com/gameframex/com.gameframex.unity.entity/compare/3.0.1...3.0.2) (2026-10-15)
 
 
